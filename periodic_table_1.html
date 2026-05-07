@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)file:///Users/maheshdalvi/Downloads/periodic_table_4.html -->
+<!-- saved from url=(0058)file:///Users/maheshdalvi/Downloads/periodic_table_11.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,6 +59,64 @@ h1{font-size:18px;font-weight:500;margin-bottom:12px;color:#fff;letter-spacing:0
 .mode-btn.body.active{background:#e056fd;border-color:transparent;color:#fff;}
 .cell.body-highlight{box-shadow:0 0 0 2px #e056fd,0 0 8px #e056fd88;z-index:5;}
 .sep{width:1px;height:20px;background:#333;margin:0 4px;}
+/* QUIZ OVERLAY */
+#quiz-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+#quiz-overlay.show{display:flex;}
+#quiz-panel{background:#13131a;border:0.5px solid #333;border-radius:16px;width:min(620px,95vw);max-height:90vh;overflow-y:auto;padding:24px;}
+#quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;}
+#quiz-title{font-size:20px;font-weight:700;background:linear-gradient(135deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+#quiz-score-wrap{display:flex;gap:10px;align-items:center;}
+#quiz-score{font-size:14px;color:#aaa;}
+#quiz-streak{font-size:14px;color:#f59e0b;}
+#quiz-close{font-size:12px;padding:4px 12px;border-radius:6px;border:0.5px solid #444;background:transparent;color:#888;cursor:pointer;}
+#quiz-close:hover{color:#fff;border-color:#888;}
+.quiz-instruction{text-align:center;font-size:15px;color:#aaa;margin-bottom:18px;}
+#quiz-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.qcat-btn{background:#1e1e2e;border:0.5px solid #333;border-radius:10px;padding:14px;text-align:left;cursor:pointer;color:#e8e8e8;font-size:14px;font-weight:600;transition:all 0.15s;display:flex;flex-direction:column;gap:4px;}
+.qcat-btn span{font-size:11px;color:#888;font-weight:400;line-height:1.3;}
+.qcat-btn:hover{border-color:#a855f7;background:#1e1e35;}
+.qcat-btn[data-cat="geo"]:hover{border-color:#22c55e;}
+.qcat-btn[data-cat="body"]:hover{border-color:#e056fd;}
+.qcat-btn[data-cat="compounds"]:hover{border-color:#3b82f6;}
+.qcat-btn[data-cat="history"]:hover{border-color:#f59e0b;}
+.qcat-btn[data-cat="everyday"]:hover{border-color:#f97316;}
+.qcat-btn[data-cat="mixed"]:hover{border-color:#a855f7;}
+#quiz-progress-bar-wrap{background:#2a2a35;border-radius:99px;height:4px;margin-bottom:16px;}
+#quiz-progress-bar{height:4px;border-radius:99px;background:linear-gradient(90deg,#a855f7,#3b82f6);transition:width 0.4s;}
+#quiz-q-num{font-size:11px;color:#666;margin-bottom:12px;text-align:right;}
+#quiz-hint-box{background:#1e1e2e;border-radius:12px;padding:16px 18px;margin-bottom:12px;border:0.5px solid #333;}
+#quiz-hint-label{font-size:10px;font-weight:700;letter-spacing:0.08em;margin-bottom:8px;}
+#quiz-hint-text{font-size:15px;color:#e8e8e8;line-height:1.6;}
+#quiz-extra-hints{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.extra-hint{background:#161620;border-radius:8px;padding:10px 14px;border:0.5px solid #2a2a35;font-size:13px;color:#ccc;line-height:1.5;animation:fadeIn 0.3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+#quiz-more-hint-btn{font-size:12px;color:#888;background:transparent;border:0.5px dashed #444;border-radius:6px;padding:5px 12px;cursor:pointer;margin-bottom:14px;transition:all 0.15s;}
+#quiz-more-hint-btn:hover{color:#f59e0b;border-color:#f59e0b;}
+#quiz-more-hint-btn:disabled{opacity:0.3;cursor:default;}
+#quiz-answer-label{font-size:12px;color:#666;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;}
+#quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.quiz-opt{background:#1e1e2e;border:0.5px solid #333;border-radius:10px;padding:12px 14px;cursor:pointer;font-size:14px;font-weight:500;text-align:left;color:#e8e8e8;transition:all 0.15s;display:flex;align-items:center;gap:8px;}
+.quiz-opt:hover:not(:disabled){border-color:#a855f7;background:#1e1e35;}
+.quiz-opt.correct{background:#052e16;border-color:#22c55e;color:#22c55e;}
+.quiz-opt.wrong{background:#2d1212;border-color:#ef4444;color:#ef4444;}
+.quiz-opt:disabled{cursor:default;}
+#quiz-feedback{min-height:40px;font-size:14px;text-align:center;line-height:1.5;color:#aaa;}
+#quiz-feedback.correct{color:#22c55e;}
+#quiz-feedback.wrong{color:#ef4444;}
+#quiz-results-title{text-align:center;font-size:32px;margin-bottom:8px;}
+#quiz-results-score{text-align:center;font-size:48px;font-weight:700;background:linear-gradient(135deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+#quiz-results-grade{text-align:center;font-size:18px;color:#aaa;margin-bottom:20px;}
+#quiz-breakdown{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto;}
+.breakdown-row{display:flex;align-items:center;gap:10px;font-size:13px;padding:6px 10px;border-radius:6px;background:#1e1e2e;}
+.breakdown-row.correct-row{border-left:3px solid #22c55e;}
+.breakdown-row.wrong-row{border-left:3px solid #ef4444;}
+.breakdown-sym{font-weight:700;min-width:30px;}
+.breakdown-name{flex:1;color:#aaa;}
+.breakdown-pts{font-size:12px;color:#666;}
+.quiz-action-btn{padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(135deg,#a855f7,#3b82f6);color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:opacity 0.15s;}
+.quiz-action-btn:hover{opacity:0.85;}
+.quiz-action-btn.secondary{background:#1e1e2e;border:0.5px solid #444;color:#aaa;}
+.quiz-action-btn.secondary:hover{border-color:#888;color:#fff;opacity:1;}
 </style>
 </head>
 <body>
@@ -71,39 +129,89 @@ h1{font-size:18px;font-weight:500;margin-bottom:12px;color:#fff;letter-spacing:0
   <button class="mode-btn state-gas" id="btn-gas" title="Highlight gases">💨 Gases</button>
   <div class="sep"></div>
   <button class="mode-btn body" id="btn-body" title="Elements in the human body">🫀 In Your Body</button>
+  <div class="sep"></div>
+  <button class="mode-btn" id="btn-quiz" style="background:linear-gradient(135deg,#6c3483,#1a5276);color:#fff;border-color:transparent;font-weight:600;">🎮 Quiz Mode</button>
 </div>
 <div id="grid"><div class="cell" data-n="1" data-st="Gas" data-cat="nonmetal" title="Hydrogen (1)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">1</span><span class="sym">H</span><span class="nm">Hydrogen</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="2" data-st="Gas" data-cat="noble-gas" title="Helium (2)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">2</span><span class="sym">He</span><span class="nm">Helium</span></div><div class="cell" data-n="3" data-st="Solid" data-cat="alkali-metal" title="Lithium (3)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">3</span><span class="sym">Li</span><span class="nm">Lithium</span></div><div class="cell" data-n="4" data-st="Solid" data-cat="alkaline-earth" title="Beryllium (4)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">4</span><span class="sym">Be</span><span class="nm">Beryllium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="5" data-st="Solid" data-cat="metalloid" title="Boron (5)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">5</span><span class="sym">B</span><span class="nm">Boron</span></div><div class="cell" data-n="6" data-st="Solid" data-cat="nonmetal" title="Carbon (6)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">6</span><span class="sym">C</span><span class="nm">Carbon</span></div><div class="cell" data-n="7" data-st="Gas" data-cat="nonmetal" title="Nitrogen (7)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">7</span><span class="sym">N</span><span class="nm">Nitrogen</span></div><div class="cell" data-n="8" data-st="Gas" data-cat="nonmetal" title="Oxygen (8)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">8</span><span class="sym">O</span><span class="nm">Oxygen</span></div><div class="cell" data-n="9" data-st="Gas" data-cat="halogen" title="Fluorine (9)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">9</span><span class="sym">F</span><span class="nm">Fluorine</span></div><div class="cell" data-n="10" data-st="Gas" data-cat="noble-gas" title="Neon (10)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">10</span><span class="sym">Ne</span><span class="nm">Neon</span></div><div class="cell" data-n="11" data-st="Solid" data-cat="alkali-metal" title="Sodium (11)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">11</span><span class="sym">Na</span><span class="nm">Sodium</span></div><div class="cell" data-n="12" data-st="Solid" data-cat="alkaline-earth" title="Magnesium (12)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">12</span><span class="sym">Mg</span><span class="nm">Magnesium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="13" data-st="Solid" data-cat="post-transition" title="Aluminum (13)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">13</span><span class="sym">Al</span><span class="nm">Aluminum</span></div><div class="cell" data-n="14" data-st="Solid" data-cat="metalloid" title="Silicon (14)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">14</span><span class="sym">Si</span><span class="nm">Silicon</span></div><div class="cell" data-n="15" data-st="Solid" data-cat="nonmetal" title="Phosphorus (15)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">15</span><span class="sym">P</span><span class="nm">Phosphorus</span></div><div class="cell" data-n="16" data-st="Solid" data-cat="nonmetal" title="Sulfur (16)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">16</span><span class="sym">S</span><span class="nm">Sulfur</span></div><div class="cell" data-n="17" data-st="Gas" data-cat="halogen" title="Chlorine (17)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">17</span><span class="sym">Cl</span><span class="nm">Chlorine</span></div><div class="cell" data-n="18" data-st="Gas" data-cat="noble-gas" title="Argon (18)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">18</span><span class="sym">Ar</span><span class="nm">Argon</span></div><div class="cell" data-n="19" data-st="Solid" data-cat="alkali-metal" title="Potassium (19)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">19</span><span class="sym">K</span><span class="nm">Potassium</span></div><div class="cell" data-n="20" data-st="Solid" data-cat="alkaline-earth" title="Calcium (20)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">20</span><span class="sym">Ca</span><span class="nm">Calcium</span></div><div class="cell" data-n="21" data-st="Solid" data-cat="transition-metal" title="Scandium (21)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">21</span><span class="sym">Sc</span><span class="nm">Scandium</span></div><div class="cell" data-n="22" data-st="Solid" data-cat="transition-metal" title="Titanium (22)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">22</span><span class="sym">Ti</span><span class="nm">Titanium</span></div><div class="cell" data-n="23" data-st="Solid" data-cat="transition-metal" title="Vanadium (23)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">23</span><span class="sym">V</span><span class="nm">Vanadium</span></div><div class="cell" data-n="24" data-st="Solid" data-cat="transition-metal" title="Chromium (24)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">24</span><span class="sym">Cr</span><span class="nm">Chromium</span></div><div class="cell" data-n="25" data-st="Solid" data-cat="transition-metal" title="Manganese (25)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">25</span><span class="sym">Mn</span><span class="nm">Manganese</span></div><div class="cell" data-n="26" data-st="Solid" data-cat="transition-metal" title="Iron (26)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">26</span><span class="sym">Fe</span><span class="nm">Iron</span></div><div class="cell" data-n="27" data-st="Solid" data-cat="transition-metal" title="Cobalt (27)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">27</span><span class="sym">Co</span><span class="nm">Cobalt</span></div><div class="cell" data-n="28" data-st="Solid" data-cat="transition-metal" title="Nickel (28)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">28</span><span class="sym">Ni</span><span class="nm">Nickel</span></div><div class="cell" data-n="29" data-st="Solid" data-cat="transition-metal" title="Copper (29)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">29</span><span class="sym">Cu</span><span class="nm">Copper</span></div><div class="cell" data-n="30" data-st="Solid" data-cat="transition-metal" title="Zinc (30)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">30</span><span class="sym">Zn</span><span class="nm">Zinc</span></div><div class="cell" data-n="31" data-st="Solid" data-cat="post-transition" title="Gallium (31)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">31</span><span class="sym">Ga</span><span class="nm">Gallium</span></div><div class="cell" data-n="32" data-st="Solid" data-cat="metalloid" title="Germanium (32)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">32</span><span class="sym">Ge</span><span class="nm">Germanium</span></div><div class="cell" data-n="33" data-st="Solid" data-cat="metalloid" title="Arsenic (33)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">33</span><span class="sym">As</span><span class="nm">Arsenic</span></div><div class="cell" data-n="34" data-st="Solid" data-cat="nonmetal" title="Selenium (34)" style="background: rgb(26, 82, 118); color: rgb(255, 255, 255);"><span class="num">34</span><span class="sym">Se</span><span class="nm">Selenium</span></div><div class="cell" data-n="35" data-st="Liquid" data-cat="halogen" title="Bromine (35)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">35</span><span class="sym">Br</span><span class="nm">Bromine</span></div><div class="cell" data-n="36" data-st="Gas" data-cat="noble-gas" title="Krypton (36)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">36</span><span class="sym">Kr</span><span class="nm">Krypton</span></div><div class="cell" data-n="37" data-st="Solid" data-cat="alkali-metal" title="Rubidium (37)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">37</span><span class="sym">Rb</span><span class="nm">Rubidium</span></div><div class="cell" data-n="38" data-st="Solid" data-cat="alkaline-earth" title="Strontium (38)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">38</span><span class="sym">Sr</span><span class="nm">Strontium</span></div><div class="cell" data-n="39" data-st="Solid" data-cat="transition-metal" title="Yttrium (39)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">39</span><span class="sym">Y</span><span class="nm">Yttrium</span></div><div class="cell" data-n="40" data-st="Solid" data-cat="transition-metal" title="Zirconium (40)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">40</span><span class="sym">Zr</span><span class="nm">Zirconium</span></div><div class="cell" data-n="41" data-st="Solid" data-cat="transition-metal" title="Niobium (41)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">41</span><span class="sym">Nb</span><span class="nm">Niobium</span></div><div class="cell" data-n="42" data-st="Solid" data-cat="transition-metal" title="Molybdenum (42)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">42</span><span class="sym">Mo</span><span class="nm">Molybdenum</span></div><div class="cell" data-n="43" data-st="Solid" data-cat="transition-metal" title="Technetium (43)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">43</span><span class="sym">Tc</span><span class="nm">Technetium</span></div><div class="cell" data-n="44" data-st="Solid" data-cat="transition-metal" title="Ruthenium (44)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">44</span><span class="sym">Ru</span><span class="nm">Ruthenium</span></div><div class="cell" data-n="45" data-st="Solid" data-cat="transition-metal" title="Rhodium (45)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">45</span><span class="sym">Rh</span><span class="nm">Rhodium</span></div><div class="cell" data-n="46" data-st="Solid" data-cat="transition-metal" title="Palladium (46)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">46</span><span class="sym">Pd</span><span class="nm">Palladium</span></div><div class="cell" data-n="47" data-st="Solid" data-cat="transition-metal" title="Silver (47)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">47</span><span class="sym">Ag</span><span class="nm">Silver</span></div><div class="cell" data-n="48" data-st="Solid" data-cat="transition-metal" title="Cadmium (48)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">48</span><span class="sym">Cd</span><span class="nm">Cadmium</span></div><div class="cell" data-n="49" data-st="Solid" data-cat="post-transition" title="Indium (49)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">49</span><span class="sym">In</span><span class="nm">Indium</span></div><div class="cell" data-n="50" data-st="Solid" data-cat="post-transition" title="Tin (50)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">50</span><span class="sym">Sn</span><span class="nm">Tin</span></div><div class="cell" data-n="51" data-st="Solid" data-cat="metalloid" title="Antimony (51)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">51</span><span class="sym">Sb</span><span class="nm">Antimony</span></div><div class="cell" data-n="52" data-st="Solid" data-cat="metalloid" title="Tellurium (52)" style="background: rgb(20, 143, 119); color: rgb(255, 255, 255);"><span class="num">52</span><span class="sym">Te</span><span class="nm">Tellurium</span></div><div class="cell" data-n="53" data-st="Solid" data-cat="halogen" title="Iodine (53)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">53</span><span class="sym">I</span><span class="nm">Iodine</span></div><div class="cell" data-n="54" data-st="Gas" data-cat="noble-gas" title="Xenon (54)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">54</span><span class="sym">Xe</span><span class="nm">Xenon</span></div><div class="cell" data-n="55" data-st="Solid" data-cat="alkali-metal" title="Cesium (55)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">55</span><span class="sym">Cs</span><span class="nm">Cesium</span></div><div class="cell" data-n="56" data-st="Solid" data-cat="alkaline-earth" title="Barium (56)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">56</span><span class="sym">Ba</span><span class="nm">Barium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="72" data-st="Solid" data-cat="transition-metal" title="Hafnium (72)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">72</span><span class="sym">Hf</span><span class="nm">Hafnium</span></div><div class="cell" data-n="73" data-st="Solid" data-cat="transition-metal" title="Tantalum (73)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">73</span><span class="sym">Ta</span><span class="nm">Tantalum</span></div><div class="cell" data-n="74" data-st="Solid" data-cat="transition-metal" title="Tungsten (74)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">74</span><span class="sym">W</span><span class="nm">Tungsten</span></div><div class="cell" data-n="75" data-st="Solid" data-cat="transition-metal" title="Rhenium (75)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">75</span><span class="sym">Re</span><span class="nm">Rhenium</span></div><div class="cell" data-n="76" data-st="Solid" data-cat="transition-metal" title="Osmium (76)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">76</span><span class="sym">Os</span><span class="nm">Osmium</span></div><div class="cell" data-n="77" data-st="Solid" data-cat="transition-metal" title="Iridium (77)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">77</span><span class="sym">Ir</span><span class="nm">Iridium</span></div><div class="cell" data-n="78" data-st="Solid" data-cat="transition-metal" title="Platinum (78)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">78</span><span class="sym">Pt</span><span class="nm">Platinum</span></div><div class="cell" data-n="79" data-st="Solid" data-cat="transition-metal" title="Gold (79)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">79</span><span class="sym">Au</span><span class="nm">Gold</span></div><div class="cell" data-n="80" data-st="Liquid" data-cat="transition-metal" title="Mercury (80)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">80</span><span class="sym">Hg</span><span class="nm">Mercury</span></div><div class="cell" data-n="81" data-st="Solid" data-cat="post-transition" title="Thallium (81)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">81</span><span class="sym">Tl</span><span class="nm">Thallium</span></div><div class="cell" data-n="82" data-st="Solid" data-cat="post-transition" title="Lead (82)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">82</span><span class="sym">Pb</span><span class="nm">Lead</span></div><div class="cell" data-n="83" data-st="Solid" data-cat="post-transition" title="Bismuth (83)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">83</span><span class="sym">Bi</span><span class="nm">Bismuth</span></div><div class="cell" data-n="84" data-st="Solid" data-cat="post-transition" title="Polonium (84)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">84</span><span class="sym">Po</span><span class="nm">Polonium</span></div><div class="cell" data-n="85" data-st="Solid" data-cat="halogen" title="Astatine (85)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">85</span><span class="sym">At</span><span class="nm">Astatine</span></div><div class="cell" data-n="86" data-st="Gas" data-cat="noble-gas" title="Radon (86)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">86</span><span class="sym">Rn</span><span class="nm">Radon</span></div><div class="cell" data-n="87" data-st="Solid" data-cat="alkali-metal" title="Francium (87)" style="background: rgb(192, 57, 43); color: rgb(255, 255, 255);"><span class="num">87</span><span class="sym">Fr</span><span class="nm">Francium</span></div><div class="cell" data-n="88" data-st="Solid" data-cat="alkaline-earth" title="Radium (88)" style="background: rgb(211, 84, 0); color: rgb(255, 255, 255);"><span class="num">88</span><span class="sym">Ra</span><span class="nm">Radium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="104" data-st="Solid" data-cat="transition-metal" title="Rutherfordium (104)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">104</span><span class="sym">Rf</span><span class="nm">Rutherfordium</span></div><div class="cell" data-n="105" data-st="Solid" data-cat="transition-metal" title="Dubnium (105)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">105</span><span class="sym">Db</span><span class="nm">Dubnium</span></div><div class="cell" data-n="106" data-st="Solid" data-cat="transition-metal" title="Seaborgium (106)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">106</span><span class="sym">Sg</span><span class="nm">Seaborgium</span></div><div class="cell" data-n="107" data-st="Solid" data-cat="transition-metal" title="Bohrium (107)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">107</span><span class="sym">Bh</span><span class="nm">Bohrium</span></div><div class="cell" data-n="108" data-st="Solid" data-cat="transition-metal" title="Hassium (108)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">108</span><span class="sym">Hs</span><span class="nm">Hassium</span></div><div class="cell" data-n="109" data-st="Solid" data-cat="transition-metal" title="Meitnerium (109)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">109</span><span class="sym">Mt</span><span class="nm">Meitnerium</span></div><div class="cell" data-n="110" data-st="Solid" data-cat="transition-metal" title="Darmstadtium (110)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">110</span><span class="sym">Ds</span><span class="nm">Darmstadtium</span></div><div class="cell" data-n="111" data-st="Solid" data-cat="transition-metal" title="Roentgenium (111)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">111</span><span class="sym">Rg</span><span class="nm">Roentgenium</span></div><div class="cell" data-n="112" data-st="Gas" data-cat="transition-metal" title="Copernicium (112)" style="background: rgb(183, 149, 11); color: rgb(255, 255, 255);"><span class="num">112</span><span class="sym">Cn</span><span class="nm">Copernicium</span></div><div class="cell" data-n="113" data-st="Solid" data-cat="post-transition" title="Nihonium (113)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">113</span><span class="sym">Nh</span><span class="nm">Nihonium</span></div><div class="cell" data-n="114" data-st="Gas" data-cat="post-transition" title="Flerovium (114)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">114</span><span class="sym">Fl</span><span class="nm">Flerovium</span></div><div class="cell" data-n="115" data-st="Solid" data-cat="post-transition" title="Moscovium (115)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">115</span><span class="sym">Mc</span><span class="nm">Moscovium</span></div><div class="cell" data-n="116" data-st="Solid" data-cat="post-transition" title="Livermorium (116)" style="background: rgb(30, 132, 73); color: rgb(255, 255, 255);"><span class="num">116</span><span class="sym">Lv</span><span class="nm">Livermorium</span></div><div class="cell" data-n="117" data-st="Solid" data-cat="halogen" title="Tennessine (117)" style="background: rgb(108, 52, 131); color: rgb(255, 255, 255);"><span class="num">117</span><span class="sym">Ts</span><span class="nm">Tennessine</span></div><div class="cell" data-n="118" data-st="Solid" data-cat="noble-gas" title="Oganesson (118)" style="background: rgb(126, 81, 9); color: rgb(255, 255, 255);"><span class="num">118</span><span class="sym">Og</span><span class="nm">Oganesson</span></div><div class="gap-row"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="57" data-st="Solid" data-cat="lanthanide" title="Lanthanum (57)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">57</span><span class="sym">La</span><span class="nm">Lanthanum</span></div><div class="cell" data-n="58" data-st="Solid" data-cat="lanthanide" title="Cerium (58)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">58</span><span class="sym">Ce</span><span class="nm">Cerium</span></div><div class="cell" data-n="59" data-st="Solid" data-cat="lanthanide" title="Praseodymium (59)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">59</span><span class="sym">Pr</span><span class="nm">Praseodymium</span></div><div class="cell" data-n="60" data-st="Solid" data-cat="lanthanide" title="Neodymium (60)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">60</span><span class="sym">Nd</span><span class="nm">Neodymium</span></div><div class="cell" data-n="61" data-st="Solid" data-cat="lanthanide" title="Promethium (61)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">61</span><span class="sym">Pm</span><span class="nm">Promethium</span></div><div class="cell" data-n="62" data-st="Solid" data-cat="lanthanide" title="Samarium (62)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">62</span><span class="sym">Sm</span><span class="nm">Samarium</span></div><div class="cell" data-n="63" data-st="Solid" data-cat="lanthanide" title="Europium (63)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">63</span><span class="sym">Eu</span><span class="nm">Europium</span></div><div class="cell" data-n="64" data-st="Solid" data-cat="lanthanide" title="Gadolinium (64)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">64</span><span class="sym">Gd</span><span class="nm">Gadolinium</span></div><div class="cell" data-n="65" data-st="Solid" data-cat="lanthanide" title="Terbium (65)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">65</span><span class="sym">Tb</span><span class="nm">Terbium</span></div><div class="cell" data-n="66" data-st="Solid" data-cat="lanthanide" title="Dysprosium (66)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">66</span><span class="sym">Dy</span><span class="nm">Dysprosium</span></div><div class="cell" data-n="67" data-st="Solid" data-cat="lanthanide" title="Holmium (67)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">67</span><span class="sym">Ho</span><span class="nm">Holmium</span></div><div class="cell" data-n="68" data-st="Solid" data-cat="lanthanide" title="Erbium (68)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">68</span><span class="sym">Er</span><span class="nm">Erbium</span></div><div class="cell" data-n="69" data-st="Solid" data-cat="lanthanide" title="Thulium (69)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">69</span><span class="sym">Tm</span><span class="nm">Thulium</span></div><div class="cell" data-n="70" data-st="Solid" data-cat="lanthanide" title="Ytterbium (70)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">70</span><span class="sym">Yb</span><span class="nm">Ytterbium</span></div><div class="cell" data-n="71" data-st="Solid" data-cat="lanthanide" title="Lutetium (71)" style="background: rgb(146, 43, 33); color: rgb(255, 255, 255);"><span class="num">71</span><span class="sym">Lu</span><span class="nm">Lutetium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div><div class="cell" data-n="89" data-st="Solid" data-cat="actinide" title="Actinium (89)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">89</span><span class="sym">Ac</span><span class="nm">Actinium</span></div><div class="cell" data-n="90" data-st="Solid" data-cat="actinide" title="Thorium (90)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">90</span><span class="sym">Th</span><span class="nm">Thorium</span></div><div class="cell" data-n="91" data-st="Solid" data-cat="actinide" title="Protactinium (91)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">91</span><span class="sym">Pa</span><span class="nm">Protactinium</span></div><div class="cell" data-n="92" data-st="Solid" data-cat="actinide" title="Uranium (92)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">92</span><span class="sym">U</span><span class="nm">Uranium</span></div><div class="cell" data-n="93" data-st="Solid" data-cat="actinide" title="Neptunium (93)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">93</span><span class="sym">Np</span><span class="nm">Neptunium</span></div><div class="cell" data-n="94" data-st="Solid" data-cat="actinide" title="Plutonium (94)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">94</span><span class="sym">Pu</span><span class="nm">Plutonium</span></div><div class="cell" data-n="95" data-st="Solid" data-cat="actinide" title="Americium (95)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">95</span><span class="sym">Am</span><span class="nm">Americium</span></div><div class="cell" data-n="96" data-st="Solid" data-cat="actinide" title="Curium (96)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">96</span><span class="sym">Cm</span><span class="nm">Curium</span></div><div class="cell" data-n="97" data-st="Solid" data-cat="actinide" title="Berkelium (97)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">97</span><span class="sym">Bk</span><span class="nm">Berkelium</span></div><div class="cell" data-n="98" data-st="Solid" data-cat="actinide" title="Californium (98)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">98</span><span class="sym">Cf</span><span class="nm">Californium</span></div><div class="cell" data-n="99" data-st="Solid" data-cat="actinide" title="Einsteinium (99)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">99</span><span class="sym">Es</span><span class="nm">Einsteinium</span></div><div class="cell" data-n="100" data-st="Solid" data-cat="actinide" title="Fermium (100)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">100</span><span class="sym">Fm</span><span class="nm">Fermium</span></div><div class="cell" data-n="101" data-st="Solid" data-cat="actinide" title="Mendelevium (101)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">101</span><span class="sym">Md</span><span class="nm">Mendelevium</span></div><div class="cell" data-n="102" data-st="Solid" data-cat="actinide" title="Nobelium (102)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">102</span><span class="sym">No</span><span class="nm">Nobelium</span></div><div class="cell" data-n="103" data-st="Solid" data-cat="actinide" title="Lawrencium (103)" style="background: rgb(66, 73, 73); color: rgb(255, 255, 255);"><span class="num">103</span><span class="sym">Lr</span><span class="nm">Lawrencium</span></div><div class="placeholder" style="width: 100%; aspect-ratio: 1 / 1;"></div></div>
 <div id="legend"><div class="li"><div class="ld" style="background:#c0392b"></div>Alkali metal</div><div class="li"><div class="ld" style="background:#d35400"></div>Alkaline earth</div><div class="li"><div class="ld" style="background:#b7950b"></div>Transition metal</div><div class="li"><div class="ld" style="background:#1e8449"></div>Post-transition</div><div class="li"><div class="ld" style="background:#148f77"></div>Metalloid</div><div class="li"><div class="ld" style="background:#1a5276"></div>Nonmetal</div><div class="li"><div class="ld" style="background:#6c3483"></div>Halogen</div><div class="li"><div class="ld" style="background:#7e5109"></div>Noble gas</div><div class="li"><div class="ld" style="background:#922b21"></div>Lanthanide</div><div class="li"><div class="ld" style="background:#424949"></div>Actinide</div></div>
-<div id="detail" class="show">
+<div id="detail">
   <div id="dl">
-    <div id="ds" style="color: rgb(183, 149, 11);">Ti</div>
-    <div id="dn">Titanium</div>
-    <div id="dc" style="background: rgba(183, 149, 11, 0.2); color: rgb(183, 149, 11);">Transition metal</div>
-    <div id="dnum">Atomic number: 22</div>
+    <div id="ds"></div>
+    <div id="dn"></div>
+    <div id="dc"></div>
+    <div id="dnum"></div>
   </div>
-  <div id="bohr-wrap" class="show"><canvas id="bohr-canvas" width="140" height="140"></canvas></div>
+  <div id="bohr-wrap"><canvas id="bohr-canvas" width="140" height="140"></canvas></div>
   <div style="flex:1;min-width:200px;">
     <div id="dr">
-      <div class="drow"><label>Atomic mass</label><span id="d-mass">47.87 u</span></div>
-      <div class="drow"><label>Electron config</label><span id="d-ec">[Ar] 3d² 4s²</span></div>
-      <div class="drow"><label>Electronegativity</label><span id="d-en">1.54</span></div>
-      <div class="drow"><label>Melting point</label><span id="d-mp">1668°C</span></div>
-      <div class="drow"><label>Boiling point</label><span id="d-bp">3287°C</span></div>
-      <div class="drow"><label>Density</label><span id="d-dn">4.51 g/cm³</span></div>
-      <div class="drow"><label>Discovered</label><span id="d-yr">1791</span></div>
-      <div class="drow"><label>State at 25°C</label><span id="d-st">Solid</span></div>
+      <div class="drow"><label>Atomic mass</label><span id="d-mass"></span></div>
+      <div class="drow"><label>Electron config</label><span id="d-ec"></span></div>
+      <div class="drow"><label>Electronegativity</label><span id="d-en"></span></div>
+      <div class="drow"><label>Melting point</label><span id="d-mp"></span></div>
+      <div class="drow"><label>Boiling point</label><span id="d-bp"></span></div>
+      <div class="drow"><label>Density</label><span id="d-dn"></span></div>
+      <div class="drow"><label>Discovered</label><span id="d-yr"></span></div>
+      <div class="drow"><label>State at 25°C</label><span id="d-st"></span></div>
     </div>
-    <div id="d-uses-box" class="show">
+    <div id="d-uses-box">
       <div id="d-uses-label">🔧 WHERE IS IT USED?</div>
-      <div id="d-uses">Aircraft engines, medical implants (hip/knee replacements), bicycle frames, and spacecraft.</div>
+      <div id="d-uses"></div>
     </div>
     <div id="d-body-box">
       <div id="d-body-label">🫀 IN THE HUMAN BODY</div>
       <div id="d-body"></div>
     </div>
-    <div id="d-fact-box" class="show">
+    <div id="d-fact-box">
       <div id="d-fact-label">⚡ FUN FACT</div>
-      <div id="d-fact">Titanium is as strong as steel but 45% lighter — that's why it's used in jet engines, spacecraft, and even medical implants like artificial hip joints.</div>
+      <div id="d-fact"></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ OVERLAY -->
+<div id="quiz-overlay">
+  <div id="quiz-panel">
+    <div id="quiz-header">
+      <div id="quiz-title">⚗️ Element Quiz</div>
+      <div id="quiz-score-wrap"><span id="quiz-score">Score: 0</span><span id="quiz-streak"></span></div>
+      <button id="quiz-close">✕ Exit</button>
+    </div>
+    <!-- Category picker -->
+    <div id="quiz-screen-cat" class="quiz-screen">
+      <div class="quiz-instruction">Choose your hint category to begin!</div>
+      <div id="quiz-cats">
+        <button class="qcat-btn" data-cat="geo">🌍 Geography<span>Which country has this element in abundance?</span></button>
+        <button class="qcat-btn" data-cat="body">🫀 Human Body<span>How does this element relate to your body?</span></button>
+        <button class="qcat-btn" data-cat="compounds">🧪 Compounds<span>What compounds does it form and how are they used?</span></button>
+        <button class="qcat-btn" data-cat="history">📜 History &amp; Discovery<span>Who discovered it and when?</span></button>
+        <button class="qcat-btn" data-cat="everyday">🏠 Everyday Life<span>Where do you encounter this element daily?</span></button>
+        <button class="qcat-btn" data-cat="mixed">🎲 Mixed<span>Random hints from all categories — the ultimate challenge!</span></button>
+      </div>
+    </div>
+    <!-- Question screen -->
+    <div id="quiz-screen-q" class="quiz-screen" style="display:none;">
+      <div id="quiz-progress-bar-wrap"><div id="quiz-progress-bar"></div></div>
+      <div id="quiz-q-num"></div>
+      <div id="quiz-hint-box">
+        <div id="quiz-hint-label"></div>
+        <div id="quiz-hint-text"></div>
+      </div>
+      <div id="quiz-extra-hints"></div>
+      <button id="quiz-more-hint-btn">💡 Get Another Hint (-1 point)</button>
+      <div id="quiz-answer-label">Which element is this?</div>
+      <div id="quiz-options"></div>
+      <div id="quiz-feedback"></div>
+    </div>
+    <!-- Results screen -->
+    <div id="quiz-screen-results" class="quiz-screen" style="display:none;">
+      <div id="quiz-results-title"></div>
+      <div id="quiz-results-score"></div>
+      <div id="quiz-results-grade"></div>
+      <div id="quiz-breakdown"></div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;">
+        <button class="quiz-action-btn" id="quiz-retry">🔄 Play Again</button>
+        <button class="quiz-action-btn secondary" id="quiz-change-cat">🎯 Change Category</button>
+      </div>
     </div>
   </div>
 </div>
@@ -250,16 +358,16 @@ const USES={
   4:"Aerospace components, X-ray windows, James Webb Space Telescope mirrors, and nuclear reactors.",
   5:"Borax cleaning products, Pyrex glass cookware, insulation fiberglass, and mild antiseptics.",
   6:"Steel alloys, pencils (graphite), diamonds, plastics, fuels, and all living organisms.",
-  7:"Fertilizers, explosives, food packaging (to keep chips fresh), and liquid nitrogen for freezing.",
-  8:"Medical oxygen tanks, steel manufacturing, rocket propellant, and water treatment.",
+  7:"Fertilizers, explosives, food packaging (to keep chips fresh), and liquid This element for freezing.",
+  8:"Medical This element tanks, steel manufacturing, rocket propellant, and water treatment.",
   9:"Toothpaste and water fluoridation, Teflon non-stick pans, and refrigerant gases.",
-  10:"Neon signs, lasers, cryogenic refrigeration, and plasma TVs.",
+  10:"This element signs, lasers, cryogenic refrigeration, and plasma TVs.",
   11:"Table salt (NaCl), street lighting, soap manufacturing, and nerve signal transmission in the body.",
   12:"Lightweight alloys for cars and aircraft, fireworks, antacid medicines, and chlorophyll in plants.",
   13:"Beverage cans, aircraft frames, kitchen foil, electrical wiring, and window frames.",
   14:"Computer chips and microprocessors, solar panels, glass, concrete, and smartphone screens.",
   15:"Fertilizers (hugely important for farming!), matches, fireworks, detergents, and DNA & ATP in cells.",
-  16:"Rubber vulcanization, gunpowder, fertilizers, medicines, and sulfuric acid (the world's most-produced chemical).",
+  16:"Rubber vulcanization, gunpowder, fertilizers, medicines, and This elementic acid (the world's most-produced chemical).",
   17:"Drinking water disinfection, swimming pools, PVC plastic, bleach, and some medicines.",
   18:"Light bulbs, welding shielding gas, double-glazed windows, and some lasers.",
   19:"Fertilizers, gunpowder, soap making, and essential for nerve and muscle function in the body.",
@@ -269,11 +377,11 @@ const USES={
   23:"Steel alloys for tools and springs, catalysts in chemical manufacturing, and some aircraft parts.",
   24:"Stainless steel, chrome plating on cars, tanning leather, and gives color to rubies and emeralds.",
   25:"Steel production, dry cell batteries, aluminum cans, and railway tracks.",
-  26:"Steel and iron construction, car engines, bridges, cookware, and hemoglobin in blood.",
-  27:"Jet engine superalloys, rechargeable batteries (cobalt-lithium), blue pigments in glass and ceramics.",
+  26:"Steel and This element construction, car engines, bridges, cookware, and hemoglobin in blood.",
+  27:"Jet engine superalloys, rechargeable batteries (This element-lithium), blue pigments in glass and ceramics.",
   28:"Stainless steel, coins, rechargeable batteries, guitar strings, and plating other metals.",
   29:"Electrical wiring, plumbing pipes, coins, bronze and brass alloys, and circuit boards.",
-  30:"Galvanizing steel to prevent rust, brass instruments, sunscreen (zinc oxide), and wound-healing creams.",
+  30:"Galvanizing steel to prevent rust, brass instruments, sunscreen (This element oxide), and wound-healing creams.",
   31:"LED lights, smartphone and TV screens (OLED), solar cells, and semiconductors.",
   32:"Fiber optic cables, infrared optics, early transistors, and some solar cells.",
   33:"Treated wood preservative (CCA), some cancer drugs, and semiconductor alloys.",
@@ -286,22 +394,22 @@ const USES={
   40:"Nuclear reactor fuel rods, jet engine parts, and fake diamonds (cubic zirconia jewelry).",
   41:"MRI machine superconducting magnets, jet engine components, and high-strength steel alloys.",
   42:"High-strength steel alloys for aircraft and armor, lubricants for high-temperature use, and catalysts.",
-  43:"Medical imaging (technetium-99m is the most widely used radioactive tracer in nuclear medicine!).",
+  43:"Medical imaging (This element-99m is the most widely used radioactive tracer in nuclear medicine!).",
   44:"Fountain pen tips, electrical contacts, solar cells, and some hard disk coatings.",
   45:"Catalytic converters in cars (reduces pollution), jewelry, and some cancer treatments.",
   46:"Catalytic converters, jewelry, electronics, hydrogen purification, and dental fillings.",
   47:"Electrical contacts and wiring, mirrors, photography (historically), jewelry, and antibacterial coatings.",
   48:"Rechargeable NiCd batteries, yellow and orange pigments in paint, solar cells, and nuclear reactors.",
   49:"Touchscreens (ITO coating), LCD and OLED displays, solders, and bearings.",
-  50:"Food can coatings, solder for electronics, bronze alloys, and glass manufacturing.",
+  50:"Food can coaThis elementgs, solder for electronics, bronze alloys, and glass manufacturing.",
   51:"Flame retardants in electronics and textiles, lead-acid batteries, and some alloys.",
   52:"CDs and DVDs (phase-change optical storage), solar cells, and some semiconductors.",
   53:"Thyroid medicine and X-ray contrast dyes, iodized table salt, antiseptic wound treatments.",
   54:"Car headlights (HID), ion thrusters on spacecraft, some general anesthetics, and flash lamps.",
   55:"Atomic clocks (GPS relies on these), drilling fluid in oil wells, and photoelectric cells.",
-  56:"Medical X-ray imaging (barium meal), fireworks (green color), rat poison (historically), and drilling mud.",
+  56:"Medical X-ray imaging (This element meal), fireworks (green color), rat poison (historically), and drilling mud.",
   57:"Camera and telescope lenses, hybrid car batteries, lighter flints, and carbon arc lighting.",
-  58:"Catalytic converters, lighter flints (cerium alloy), self-cleaning ovens, and glass polishing.",
+  58:"Catalytic converters, lighter flints (This element alloy), self-cleaning ovens, and glass polishing.",
   59:"Powerful magnets for headphones and microphones, aircraft engines, and colored glass (yellow/green).",
   60:"The strongest permanent magnets — used in headphones, hard drives, EV motors, and wind turbines.",
   61:"Nuclear batteries for spacecraft and pacemakers (historically), and luminous paint (now replaced).",
@@ -322,23 +430,23 @@ const USES={
   76:"Hardening platinum and iridium alloys, fountain pen tips, electrical contacts, and catalysts.",
   77:"Spark plugs, crucibles for high-temperature chemistry, compass bearings, and catalytic converters.",
   78:"Catalytic converters (cars), cancer treatment drugs (cisplatin), jewelry, and laboratory equipment.",
-  79:"Jewelry and coins, electronics (gold plating), dentistry, and financial reserves (gold bars!).",
+  79:"Jewelry and coins, electronics (This element plating), dentistry, and financial reserves (it bars!).",
   80:"Thermometers (historically), barometers, fluorescent lights, and some electrical switches.",
-  81:"Medical imaging (thallium stress test for heart), infrared detectors, and some glass manufacturing.",
-  82:"Car batteries (lead-acid), radiation shielding (X-ray aprons), solder, and some crystal glass.",
+  81:"Medical imaging (This element stress test for heart), infrared detectors, and some glass manufacturing.",
+  82:"Car batteries (This element-acid), radiation shielding (X-ray aprons), solder, and some crystal glass.",
   83:"Pepto-Bismol stomach medicine, lead-free fishing weights, cosmetics, and fire sprinkler alloys.",
   84:"Static eliminators in industrial equipment, and some cancer treatment (targeted alpha therapy).",
-  85:"Targeted cancer radiotherapy (astatine-211 shows great promise for treating cancer).",
+  85:"Targeted cancer radiotherapy (This element-211 shows great promise for treating cancer).",
   86:"Used in some cancer radiation therapy and as a tracer in geological studies. Otherwise avoided!",
   87:"Primarily used in scientific research — no commercial applications due to extreme rarity.",
   88:"Historically used in luminous watch and clock dials. Now used only in scientific research.",
-  89:"Cancer treatment (actinium-225 for targeted alpha therapy) and scientific research.",
-  90:"Potentially nuclear reactor fuel (thorium reactors), high-temperature alloys, and some lantern mantles.",
+  89:"Cancer treatment (This element-225 for targeted alpha therapy) and scientific research.",
+  90:"Potentially nuclear reactor fuel (This element reactors), high-temperature alloys, and some lantern mantles.",
   91:"Primarily scientific research. No significant commercial uses.",
   92:"Nuclear power plants (fuel), nuclear weapons, and some military armor-piercing ammunition.",
   93:"Nuclear reactor byproduct, used in some research reactors, and production of plutonium-238.",
   94:"Nuclear weapons, nuclear power reactors, and RTG power sources for deep space probes (Voyager!).",
-  95:"Smoke detectors (americium-241 ionizes air), and some cancer treatment devices.",
+  95:"Smoke detectors (This element-241 ionizes air), and some cancer treatment devices.",
   96:"Power source in spacecraft (Curiosity Mars rover used it!), and some pacemaker batteries historically.",
   97:"Primarily scientific research — only microgram quantities ever produced.",
   98:"Starting up nuclear reactors, detecting gold and silver ore, and treating some brain cancers.",
@@ -366,28 +474,28 @@ const USES={
 
 const BODY={
   1:"Makes up water (H₂O) which is 60% of your body. Also part of every organic molecule — proteins, DNA, fats.",
-  6:"The backbone of life! Every protein, fat, carbohydrate, and DNA molecule in your body is built around carbon chains.",
-  7:"Found in all proteins and DNA. Your body is about 3% nitrogen by mass.",
+  6:"The backbone of life! Every protein, fat, carbohydrate, and DNA molecule in your body is built around This element chains.",
+  7:"Found in all proteins and DNA. Your body is about 3% This element by mass.",
   8:"Makes up 65% of your body by mass — mostly in water and in bones (as calcium phosphate).",
-  11:"Sodium controls fluid balance and nerve signals. It's the main positive ion outside your cells.",
+  11:"This element controls fluid balance and nerve signals. It's the main positive ion outside your cells.",
   12:"Essential for over 300 enzyme reactions, muscle contractions, and keeping your heartbeat steady.",
   15:"Found in DNA, RNA, ATP (your cells' energy currency), and bones. About 1% of your body weight.",
   16:"Part of two essential amino acids (cysteine & methionine) and found in hair, nails, and skin.",
   17:"Chloride ions help regulate fluid balance and are part of stomach acid (HCl) for digestion.",
-  19:"Potassium controls the electrical signals in nerve and muscle cells — essential for your heartbeat.",
-  20:"99% of your body's calcium is in bones and teeth. Also vital for muscle contraction and blood clotting.",
-  26:"Iron in hemoglobin carries oxygen in your blood — that's what makes blood red! Low iron = anemia.",
-  30:"Zinc helps heal wounds, supports your immune system, and is needed for your sense of taste and smell.",
-  34:"Selenium is a trace mineral that acts as an antioxidant, protecting cells from damage. Found in meat and nuts.",
-  53:"Iodine is essential for making thyroid hormones that control your metabolism and growth.",
-  25:"Manganese activates enzymes and helps build bone and connective tissue. Found in nuts and whole grains.",
-  29:"Copper helps make red blood cells and keeps nerve cells healthy. Found in nuts, seeds, and liver.",
-  27:"Cobalt is the central atom of vitamin B12, which is essential for nerve function and making red blood cells.",
-  42:"Molybdenum is a trace element that activates certain enzymes and helps process amino acids.",
-  24:"Chromium helps insulin regulate blood sugar levels. Found in whole grains, broccoli, and nuts.",
-  14:"Silicon may contribute to bone and connective tissue formation, though its role is still being studied.",
-  9:"Fluoride (fluorine ion) strengthens tooth enamel, making teeth resistant to decay.",
-  5:"Boron may support bone health and brain function, though it's only needed in tiny trace amounts."
+  19:"This element controls the electrical signals in nerve and muscle cells — essential for your heartbeat.",
+  20:"99% of your body's This element is in bones and teeth. Also vital for muscle contraction and blood clotting.",
+  26:"This element in hemoglobin carries oxygen in your blood — that's what makes blood red! Low it = anemia.",
+  30:"This element helps heal wounds, supports your immune system, and is needed for your sense of taste and smell.",
+  34:"This element is a trace mineral that acts as an antioxidant, protecting cells from damage. Found in meat and nuts.",
+  53:"This element is essential for making thyroid hormones that control your metabolism and growth.",
+  25:"This element activates enzymes and helps build bone and connective tissue. Found in nuts and whole grains.",
+  29:"This element helps make red blood cells and keeps nerve cells healthy. Found in nuts, seeds, and liver.",
+  27:"This element is the central atom of vitamin B12, which is essential for nerve function and making red blood cells.",
+  42:"This element is a trace element that activates certain enzymes and helps process amino acids.",
+  24:"This element helps insulin regulate blood sugar levels. Found in whole grains, broccoli, and nuts.",
+  14:"This element may contribute to bone and connective tissue formation, though its role is still being studied.",
+  9:"Fluoride (This element ion) strengthens tooth enamel, making teeth resistant to decay.",
+  5:"This element may support bone health and brain function, though it's only needed in tiny trace amounts."
 };
 
 // Elements found in human body (atomic numbers)
@@ -525,124 +633,124 @@ function buildGrid(filter){
 }
 
 const FACTS={
-  1:"Hydrogen is the most abundant element in the universe — about 75% of all normal matter by mass! It also powers the Sun through nuclear fusion.",
-  2:"Helium was discovered in the Sun before it was found on Earth! Its name comes from 'Helios,' the Greek god of the Sun. It makes your voice squeaky because it's so light.",
-  3:"Lithium is used in the batteries that power your phone and laptop! It's so light it can float on water — but it would also react violently with it.",
-  4:"Beryllium is extremely stiff and light, making it perfect for spacecraft and telescopes like the James Webb Space Telescope's mirrors!",
-  5:"Boron is found in borax, a common cleaning product. It's also used in the glass of Pyrex cookware, which is why it doesn't shatter when you put it in a hot oven.",
-  6:"Carbon is the backbone of all life on Earth! Diamond and graphite (pencil lead) are both made of pure carbon — just arranged differently.",
-  7:"About 78% of the air you breathe is nitrogen! It's also used to make fertilizers that help grow the food we eat.",
-  8:"Oxygen makes up about 21% of the air and is essential for life. It also makes up about 65% of the human body by mass!",
-  9:"Fluorine is the most reactive element on the periodic table — it can even react with noble gases! It's added to toothpaste to strengthen your teeth.",
-  10:"Neon glows a brilliant red-orange when electricity passes through it. Despite being in 'neon signs,' most colored signs actually use other gases!",
-  11:"Sodium explodes violently when dropped in water! Yet combined with chlorine, it becomes table salt — the stuff you put on french fries.",
-  12:"Magnesium burns with a dazzling white flame so bright it was used in old-fashioned camera flashbulbs. It's also in your bones and helps hundreds of body processes.",
-  13:"Aluminum is the most abundant metal in Earth's crust! Recycling one aluminum can saves enough energy to run a TV for 3 hours.",
-  14:"Silicon is the second most abundant element in Earth's crust and the foundation of all computer chips and smartphones. We literally live in the Silicon Age!",
-  15:"Phosphorus glows in the dark! It comes in two forms — white phosphorus is dangerously flammable, while red phosphorus is used on matchbox strike strips.",
-  16:"Sulfur smells like rotten eggs! It was known in ancient times and is mentioned in the Bible as 'brimstone.' Volcanoes release huge amounts of it.",
-  17:"Chlorine was used as a chemical weapon in WWI, but in tiny, safe amounts it keeps swimming pools and drinking water clean and germ-free.",
-  18:"Argon makes up about 1% of the air you breathe! It's used inside regular light bulbs to prevent the filament from burning out too quickly.",
-  19:"Potassium is vital for your heart to beat properly. Bananas are famous for containing it! The chemical symbol K comes from the Latin word 'kalium.'",
-  20:"Calcium makes up your bones and teeth! Your body contains about 1 kg of calcium. Milk and dairy products are great sources of this element.",
-  21:"Scandium is so rare that it took decades after its discovery to collect even one gram of pure metal! It's used in baseball bats and bicycle frames for strength.",
-  22:"Titanium is as strong as steel but 45% lighter — that's why it's used in jet engines, spacecraft, and even medical implants like artificial hip joints.",
-  23:"Vanadium steel is incredibly tough and was used in the first Ford Model T cars! Henry Ford called it 'the most important metal I know of.'",
-  24:"Chromium gives stainless steel its rust-resistant shine! It also gives rubies their red color and emeralds their green — just different crystal structures.",
-  25:"A chunk of manganese will sink in water and rust, but its atoms are essential in photosynthesis — helping plants split water molecules using sunlight!",
-  26:"Iron is the most common element by mass in the entire Earth! The Earth's core is mostly iron. It's also what makes your blood red.",
-  27:"Cobalt gives glass and ceramics their brilliant blue color — 'cobalt blue' has been used by artists for centuries. It's also in your vitamin B12!",
-  28:"Nickel gives US 5-cent coins their name even though modern nickels are mostly copper! It's also in the protective coating on many other metal objects.",
-  29:"Copper was the first metal used by humans over 10,000 years ago! It turns green (like the Statue of Liberty) when it reacts with air and water.",
-  30:"Zinc is what makes brass (mixed with copper) and is used to coat steel to prevent rust — a process called galvanizing. Your body needs it to heal wounds!",
-  31:"Gallium melts in your hand! Its melting point is just 29.8°C, slightly above room temperature. It's used to make LEDs and smartphone screens.",
-  32:"Germanium was predicted by Mendeleev before it was discovered! He left a gap in his periodic table and described its properties almost perfectly.",
-  33:"Arsenic is famous as a poison, but tiny amounts are used in some medicines. It was once used in wallpaper dye — causing mysterious Victorian-era illnesses!",
-  34:"Selenium is what makes photocopiers work! It's also essential in tiny amounts for human health — too little or too much can both cause serious problems.",
-  35:"Bromine is one of only two elements that is liquid at room temperature (the other is mercury). It smells terrible — its name comes from the Greek word for 'stench'!",
-  36:"Krypton has nothing to do with Superman's home planet, but it is real! It's used in some lasers and was once used to define the standard meter length.",
-  37:"Rubidium is so reactive that it spontaneously catches fire in air and explodes in water! It's used in atomic clocks that lose only 1 second every 300 years.",
-  38:"Strontium salts burn bright red and are used in fireworks and emergency flares. Radioactive strontium-90 from nuclear tests was once found in children's teeth!",
-  39:"Yttrium is used in the red phosphor in old TV screens and in cancer treatment! It was named after the tiny village of Ytterby in Sweden.",
-  40:"Zirconium is incredibly corrosion-resistant and is used to line nuclear reactors. Cubic zirconia (fake diamonds) are made from zirconium dioxide.",
-  41:"Niobium is used to make superconducting magnets for MRI machines in hospitals. Brazil produces most of the world's niobium — about 90% of global supply!",
-  42:"Molybdenum has one of the highest melting points of any metal and is added to steel to make it super tough for jet engines and rifle barrels.",
-  43:"Technetium was the first element to be artificially made in a lab! It doesn't exist naturally on Earth and is mildly radioactive. It's used in medical scans.",
-  44:"Ruthenium is one of the rarest metals on Earth and is used to make fountain pen nibs harder so they last longer. It can also help make more efficient solar cells.",
-  45:"Rhodium is one of the most expensive metals in the world — more valuable than gold! It's used in catalytic converters in cars to reduce pollution.",
-  46:"Palladium can absorb up to 900 times its own volume of hydrogen gas! It's used in catalytic converters and is increasingly used in electronics.",
-  47:"Silver is the best conductor of electricity of all metals! It has been used as money for thousands of years and has natural antibacterial properties.",
-  48:"Cadmium is used in rechargeable NiCd batteries and gives paints their bright yellow color. It's quite toxic — artists now mostly avoid cadmium-based pigments.",
-  49:"Indium is so soft you can scratch it with your fingernail! It's a key ingredient in the touchscreens of phones and tablets — without it, no swiping!",
-  50:"Tin was combined with copper to make bronze, launching the Bronze Age about 3,300 years ago! The 'tin' cans in your kitchen are actually mostly steel coated with tin.",
-  51:"Antimony was used as eye makeup in ancient Egypt! It's still used today in flame retardants to make furniture and children's clothing less flammable.",
-  52:"Tellurium smells absolutely awful — if you touch it, your breath will smell like garlic for weeks! It's used to make CDs and DVDs.",
-  53:"Iodine vapor is a beautiful violet color — that's how it got its name (from the Greek word for violet). It's added to table salt to prevent thyroid problems.",
-  54:"Xenon is used in the powerful headlights of luxury cars and in ion thrusters on spacecraft. It was first used as an anesthetic — it can put you to sleep!",
-  55:"Cesium atomic clocks are so accurate they're used to define the official length of a second. Cesium is also dangerously explosive in water!",
-  56:"Barium sulfate is drunk as a 'milkshake' before stomach X-rays! It's completely insoluble and coats the insides so doctors can see what's going on.",
-  57:"Lanthanum is used in hybrid car batteries and camera lenses. It gives glass special properties that reduce the rainbow-like distortion in high-quality cameras.",
-  58:"Cerium is the most abundant rare earth element and is used in catalytic converters in cars. It's also the 'flint' in lighters — the sparky bit!",
-  59:"Praseodymium's name means 'green twin' in Greek. When mixed with neodymium, it makes incredibly powerful magnets used in headphones and microphones.",
-  60:"Neodymium magnets are the strongest permanent magnets in the world! They're in every pair of earbuds, every hard drive, and every electric car motor.",
-  61:"Promethium is the only lanthanide with no stable isotopes — it's entirely radioactive! It was named after Prometheus, the Greek Titan who stole fire from the gods.",
-  62:"Samarium magnets were the first rare earth magnets strong enough to be used in headphones and guitar pickups. Samarium-153 is used to treat bone cancer.",
-  63:"Europium makes the red and blue colors in euro banknotes glow under UV light as an anti-counterfeiting measure. It also makes fluorescent lights brighter!",
-  64:"Gadolinium is used as a contrast agent in MRI scans — doctors inject it to make soft tissues show up more clearly. It has unique magnetic properties.",
-  65:"Terbium glows bright green under UV light and is used in energy-efficient fluorescent bulbs and TV screens to produce the green color.",
-  66:"Dysprosium is crucial for making the magnets in electric car motors and wind turbines work at high temperatures without losing their magnetic strength.",
-  67:"Holmium has the strongest magnetic moment of any element! It's used in powerful magnets for scientific research and in solid-state lasers.",
-  68:"Erbium is used in fiber optic cables to boost internet signals over long distances. It's also used in laser eye surgery! Its pink color is used in glass.",
-  69:"Thulium is one of the rarest lanthanides. It can power portable X-ray machines that don't need electricity — useful in remote areas with no power.",
-  70:"Ytterbium was discovered in the same Swedish village as yttrium, terbium, and erbium — all named after Ytterby! It's used in fiber optic amplifiers.",
-  71:"Lutetium is one of the hardest and densest of the rare earth metals. It's used in cancer treatment using targeted radiation and in PET scan detectors.",
-  72:"Hafnium looks like steel but resists heat incredibly well. It's used in nuclear reactor control rods and in the tiny transistors inside modern computer chips.",
-  73:"Tantalum is used in the capacitors in virtually every smartphone and laptop. It's named after Tantalus from Greek mythology, who was cursed to stand in water he could never drink.",
-  74:"Tungsten has the highest melting point of any metal at 3,422°C! It's what made incandescent light bulb filaments glow. Its symbol W comes from 'wolfram.'",
-  75:"Rhenium was the last naturally occurring stable element to be discovered, in 1925. It's used in jet engine turbine blades that must withstand extreme heat.",
-  76:"Osmium is the densest naturally occurring element — a cube the size of a sugar lump would weigh about as much as a golf ball! It's used in fountain pen tips.",
-  77:"Iridium is extremely rare on Earth's surface, but the layer of rock formed when the dinosaur-killing asteroid hit contains lots of it — proof of the impact!",
-  78:"Platinum is rarer than gold and used in catalytic converters, jewelry, and cancer-fighting drugs (cisplatin). It's so unreactive it stays shiny forever.",
-  79:"Gold has been treasured by humans for over 5,000 years! It's so malleable that one ounce can be beaten into a sheet covering 9 square meters. All gold came from colliding neutron stars!",
-  80:"Mercury is the only metal that is liquid at room temperature! Thermometers used to contain it. It's so dense that iron cannonballs float in it!",
-  81:"Thallium is extremely toxic and was once used as rat poison and even in a few high-profile murder cases! Today it's used in medical imaging.",
-  82:"Lead was used in Roman plumbing (hence the symbol Pb from 'plumbum'). Some historians think lead poisoning contributed to the fall of the Roman Empire!",
-  83:"Bismuth crystals form gorgeous rainbow-colored geometric shapes! It's the least toxic of the heavy metals and is the active ingredient in Pepto-Bismol.",
-  84:"Polonium was discovered by Marie Curie in 1898 and named after her homeland Poland. It's extremely radioactive and was used in the famous poisoning of Alexander Litvinenko.",
-  85:"Astatine is the rarest naturally occurring element on Earth — at any given moment, there's less than 1 gram of it in the entire Earth's crust!",
-  86:"Radon is a radioactive gas that seeps up from the ground through natural uranium decay. It can collect in basements and is the second leading cause of lung cancer.",
-  87:"Francium is so radioactive that a visible sample has never been made — its longest-lived isotope has a half-life of just 22 minutes! At most, 30 grams exist on Earth at once.",
-  88:"Radium was discovered by Marie and Pierre Curie after processing tons of uranium ore. It used to be painted on watch dials to make them glow in the dark — dangerously!",
-  89:"Actinium is so radioactive it glows blue in the dark! The eerie blue glow comes from the ionization of air around the intensely radioactive metal.",
-  90:"Thorium could be the future of nuclear energy! It's safer and more abundant than uranium, and some countries are building thorium reactors right now.",
-  91:"Protactinium is one of the rarest and most expensive natural elements. The first sample of pure protactinium metal wasn't obtained until 1934 — 20 years after its discovery!",
-  92:"Uranium is radioactive and used as nuclear fuel. One kilogram of uranium can produce as much energy as 1,500 tonnes of coal! Natural uranium is only mildly radioactive.",
-  93:"Neptunium was the first synthetic transuranium element, made in 1940. It was named after Neptune, the planet beyond Uranus — just as neptunium is beyond uranium!",
-  94:"Plutonium is famous for its use in nuclear weapons and reactors. But the Voyager spacecraft that left our solar system runs on plutonium power that will last for decades!",
-  95:"Americium is found in smoke detectors! A tiny amount of radioactive americium-241 inside your smoke detector ionizes air to detect smoke particles.",
-  96:"Curium was named after Marie and Pierre Curie. It's so intensely radioactive that it glows red in the dark from the heat of its own radioactive decay!",
-  97:"Berkelium was first made in 1949 at UC Berkeley using a cyclotron. Only milligrams have ever been produced — it's incredibly rare and intensely radioactive.",
-  98:"Californium is so intensely radioactive it can start a nuclear chain reaction with just a tiny amount. It's used to start up nuclear reactors and to detect gold ore!",
-  99:"Einsteinium was discovered in 1952 in the fallout from the first hydrogen bomb test. It was secretly named after Albert Einstein and classified for years.",
-  100:"Fermium was also found in H-bomb fallout alongside einsteinium. It was named after Enrico Fermi, who built the world's first nuclear reactor in a squash court in Chicago!",
-  101:"Mendelevium was named after Dmitri Mendeleev, who created the periodic table! It was first made in 1955 by bombarding einsteinium with alpha particles.",
-  102:"Nobelium was named after Alfred Nobel, the inventor of dynamite who founded the Nobel Prizes. Only a few atoms have ever been made at one time.",
-  103:"Lawrencium was named after Ernest Lawrence, inventor of the cyclotron particle accelerator. It's the last of the actinide series and was first made in 1961.",
-  104:"Rutherfordium was the first element heavier than the actinides to be synthesized. Named after Ernest Rutherford who discovered the atomic nucleus!",
-  105:"Dubnium was independently created by scientists in the US and the USSR during the Cold War — they fought for years over what to name it!",
-  106:"Seaborgium was named after Glenn Seaborg while he was still alive — the only person ever to have an element named after them during their lifetime!",
-  107:"Bohrium was named after Niels Bohr, the Danish physicist who developed the model of atomic structure that you learn in chemistry class.",
-  108:"Hassium was named after the German state of Hesse where it was created. Only a few atoms have ever been made and they decay in milliseconds.",
-  109:"Meitnerium was named after Lise Meitner, the physicist who co-discovered nuclear fission but was overlooked for the Nobel Prize. A long-overdue honor!",
-  110:"Darmstadtium was named after Darmstadt, Germany. It has a half-life of just 10 seconds — it barely exists before it falls apart into other elements!",
-  111:"Roentgenium was named after Wilhelm Röntgen, who discovered X-rays. Only a handful of atoms have ever been detected — it's incredibly unstable.",
-  112:"Copernicium was named after astronomer Nicolaus Copernicus who first proposed that Earth orbits the Sun — not the other way around!",
-  113:"Nihonium was the first element discovered in Asia! Japanese scientists at RIKEN created it and named it after Japan ('Nihon' means Japan in Japanese).",
-  114:"Flerovium was named after the Flerov Laboratory in Russia where it was made. It may actually behave like a gas at room temperature despite being a metal!",
-  115:"Moscovium is named after Moscow Oblast in Russia. It was first synthesized in 2003 and confirmed in 2015. Only a few dozen atoms have ever been created.",
-  116:"Livermorium was named after Lawrence Livermore National Laboratory in California. It was created in a collaboration between Russian and American scientists.",
-  117:"Tennessine is named after Tennessee, USA — home to Oak Ridge National Laboratory, Vanderbilt University, and the University of Tennessee, all involved in its discovery.",
-  118:"Oganesson is named after Russian nuclear physicist Yuri Oganessian. It's the heaviest element known and may be a gas or solid — scientists aren't even sure yet!"
+  1:"This element is the most abundant element in the universe — about 75% of all normal matter by mass! It also powers the Sun through nuclear fusion.",
+  2:"This element was discovered in the Sun before it was found on Earth! Its name comes from 'Helios,' the Greek god of the Sun. It makes your voice squeaky because it's so light.",
+  3:"This element is used in the batteries that power your phone and laptop! It's so light it can float on water — but it would also react violently with it.",
+  4:"This element is extremely stiff and light, making it perfect for spacecraft and telescopes like the James Webb Space Telescope's mirrors!",
+  5:"This element is found in borax, a common cleaning product. It's also used in the glass of Pyrex cookware, which is why it doesn't shatter when you put it in a hot oven.",
+  6:"This element is the backbone of all life on Earth! Diamond and graphite (pencil lead) are both made of pure it — just arranged differently.",
+  7:"About 78% of the air you breathe is This element! It's also used to make fertilizers that help grow the food we eat.",
+  8:"This element makes up about 21% of the air and is essential for life. It also makes up about 65% of the human body by mass!",
+  9:"This element is the most reactive element on the periodic table — it can even react with noble gases! It's added to toothpaste to strengthen your teeth.",
+  10:"This element glows a brilliant red-orange when electricity passes through it. Despite being in 'it signs,' most colored signs actually use other gases!",
+  11:"This element explodes violently when dropped in water! Yet combined with chlorine, it becomes table salt — the stuff you put on french fries.",
+  12:"This element burns with a dazzling white flame so bright it was used in old-fashioned camera flashbulbs. It's also in your bones and helps hundreds of body processes.",
+  13:"This element is the most abundant metal in Earth's crust! Recycling one it can saves enough energy to run a TV for 3 hours.",
+  14:"This element is the second most abundant element in Earth's crust and the foundation of all computer chips and smartphones. We literally live in the it Age!",
+  15:"This element glows in the dark! It comes in two forms — white it is dangerously flammable, while red it is used on matchbox strike strips.",
+  16:"This element smells like rotten eggs! It was known in ancient times and is mentioned in the Bible as 'brimstone.' Volcanoes release huge amounts of it.",
+  17:"This element was used as a chemical weapon in WWI, but in tiny, safe amounts it keeps swimming pools and drinking water clean and germ-free.",
+  18:"This element makes up about 1% of the air you breathe! It's used inside regular light bulbs to prevent the filament from burning out too quickly.",
+  19:"This element is vital for your heart to beat properly. Bananas are famous for containing it! The chemical symbol K comes from the Latin word 'kalium.'",
+  20:"This element makes up your bones and teeth! Your body contains about 1 kg of it. Milk and dairy products are great sources of this element.",
+  21:"This element is so rare that it took decades after its discovery to collect even one gram of pure metal! It's used in baseball bats and bicycle frames for strength.",
+  22:"This element is as strong as steel but 45% lighter — that's why it's used in jet engines, spacecraft, and even medical implants like artificial hip joints.",
+  23:"This element steel is incredibly tough and was used in the first Ford Model T cars! Henry Ford called it 'the most important metal I know of.'",
+  24:"This element gives stainless steel its rust-resistant shine! It also gives rubies their red color and emeralds their green — just different crystal structures.",
+  25:"A chunk of This element will sink in water and rust, but its atoms are essential in photosynthesis — helping plants split water molecules using sunlight!",
+  26:"This element is the most common element by mass in the entire Earth! The Earth's core is mostly it. It's also what makes your blood red.",
+  27:"This element gives glass and ceramics their brilliant blue color — 'it blue' has been used by artists for centuries. It's also in your vitamin B12!",
+  28:"This element gives US 5-cent coins their name even though modern nickels are mostly copper! It's also in the protective coating on many other metal objects.",
+  29:"This element was the first metal used by humans over 10,000 years ago! It turns green (like the Statue of Liberty) when it reacts with air and water.",
+  30:"This element is what makes brass (mixed with copper) and is used to coat steel to prevent rust — a process called galvanizing. Your body needs it to heal wounds!",
+  31:"This element melts in your hand! Its melting point is just 29.8°C, slightly above room temperature. It's used to make LEDs and smartphone screens.",
+  32:"This element was predicted by Mendeleev before it was discovered! He left a gap in his periodic table and described its properties almost perfectly.",
+  33:"This element is famous as a poison, but tiny amounts are used in some medicines. It was once used in wallpaper dye — causing mysterious Victorian-era illnesses!",
+  34:"This element is what makes photocopiers work! It's also essential in tiny amounts for human health — too little or too much can both cause serious problems.",
+  35:"This element is one of only two elements that is liquid at room temperature (the other is mercury). It smells terrible — its name comes from the Greek word for 'stench'!",
+  36:"This element has nothing to do with Superman's home planet, but it is real! It's used in some lasers and was once used to define the standard meter length.",
+  37:"This element is so reactive that it spontaneously catches fire in air and explodes in water! It's used in atomic clocks that lose only 1 second every 300 years.",
+  38:"This element salts burn bright red and are used in fireworks and emergency flares. Radioactive it-90 from nuclear tests was once found in children's teeth!",
+  39:"This element is used in the red phosphor in old TV screens and in cancer treatment! It was named after the tiny village of Ytterby in Sweden.",
+  40:"This element is incredibly corrosion-resistant and is used to line nuclear reactors. Cubic zirconia (fake diamonds) are made from it dioxide.",
+  41:"This element is used to make superconducting magnets for MRI machines in hospitals. Brazil produces most of the world's it — about 90% of global supply!",
+  42:"This element has one of the highest melting points of any metal and is added to steel to make it super tough for jet engines and rifle barrels.",
+  43:"This element was the first element to be artificially made in a lab! It doesn't exist naturally on Earth and is mildly radioactive. It's used in medical scans.",
+  44:"This element is one of the rarest metals on Earth and is used to make fountain pen nibs harder so they last longer. It can also help make more efficient solar cells.",
+  45:"This element is one of the most expensive metals in the world — more valuable than gold! It's used in catalytic converters in cars to reduce pollution.",
+  46:"This element can absorb up to 900 times its own volume of hydrogen gas! It's used in catalytic converters and is increasingly used in electronics.",
+  47:"This element is the best conductor of electricity of all metals! It has been used as money for thousands of years and has natural antibacterial properties.",
+  48:"This element is used in rechargeable NiCd batteries and gives paints their bright yellow color. It's quite toxic — artists now mostly avoid it-based pigments.",
+  49:"This element is so soft you can scratch it with your fingernail! It's a key ingredient in the touchscreens of phones and tablets — without it, no swiping!",
+  50:"This element was combined with copper to make bronze, launching the Bronze Age about 3,300 years ago! The 'it' cans in your kitchen are actually mostly steel coated with it.",
+  51:"This element was used as eye makeup in ancient Egypt! It's still used today in flame retardants to make furniture and children's clothing less flammable.",
+  52:"This element smells absolutely awful — if you touch it, your breath will smell like garlic for weeks! It's used to make CDs and DVDs.",
+  53:"This element vapor is a beautiful violet color — that's how it got its name (from the Greek word for violet). It's added to table salt to prevent thyroid problems.",
+  54:"This element is used in the powerful headlights of luxury cars and in ion thrusters on spacecraft. It was first used as an anesthetic — it can put you to sleep!",
+  55:"This element atomic clocks are so accurate they're used to define the official length of a second. it is also dangerously explosive in water!",
+  56:"This element sulfate is drunk as a 'milkshake' before stomach X-rays! It's completely insoluble and coats the insides so doctors can see what's going on.",
+  57:"This element is used in hybrid car batteries and camera lenses. It gives glass special properties that reduce the rainbow-like distortion in high-quality cameras.",
+  58:"This element is the most abundant rare earth element and is used in catalytic converters in cars. It's also the 'flint' in lighters — the sparky bit!",
+  59:"Its name means 'green twin' in Greek. When mixed with neodymium, it makes incredibly powerful magnets used in headphones and microphones.",
+  60:"This element magnets are the strongest permanent magnets in the world! They're in every pair of earbuds, every hard drive, and every electric car motor.",
+  61:"This element is the only lanthanide with no stable isotopes — it's entirely radioactive! It was named after Prometheus, the Greek Titan who stole fire from the gods.",
+  62:"This element magnets were the first rare earth magnets strong enough to be used in headphones and guitar pickups. it-153 is used to treat bone cancer.",
+  63:"This element makes the red and blue colors in euro banknotes glow under UV light as an anti-counterfeiting measure. It also makes fluorescent lights brighter!",
+  64:"This element is used as a contrast agent in MRI scans — doctors inject it to make soft tissues show up more clearly. It has unique magnetic properties.",
+  65:"This element glows bright green under UV light and is used in energy-efficient fluorescent bulbs and TV screens to produce the green color.",
+  66:"This element is crucial for making the magnets in electric car motors and wind turbines work at high temperatures without losing their magnetic strength.",
+  67:"This element has the strongest magnetic moment of any element! It's used in powerful magnets for scientific research and in solid-state lasers.",
+  68:"This element is used in fiber optic cables to boost internet signals over long distances. It's also used in laser eye surgery! Its pink color is used in glass.",
+  69:"This element is one of the rarest lanthanides. It can power portable X-ray machines that don't need electricity — useful in remote areas with no power.",
+  70:"This element was discovered in the same Swedish village as yttrium, terbium, and erbium — all named after Ytterby! It's used in fiber optic amplifiers.",
+  71:"This element is one of the hardest and densest of the rare earth metals. It's used in cancer treatment using targeted radiation and in PET scan detectors.",
+  72:"This element looks like steel but resists heat incredibly well. It's used in nuclear reactor control rods and in the tiny transistors inside modern computer chips.",
+  73:"This element is used in the capacitors in virtually every smartphone and laptop. It's named after Tantalus from Greek mythology, who was cursed to stand in water he could never drink.",
+  74:"This element has the highest melting point of any metal at 3,422°C! It's what made incandescent light bulb filaments glow. Its symbol W comes from 'wolfram.'",
+  75:"This element was the last naturally occurring stable element to be discovered, in 1925. It's used in jet engine turbine blades that must withstand extreme heat.",
+  76:"This element is the densest naturally occurring element — a cube the size of a sugar lump would weigh about as much as a golf ball! It's used in fountain pen tips.",
+  77:"This element is extremely rare on Earth's surface, but the layer of rock formed when the dinosaur-killing asteroid hit contains lots of it — proof of the impact!",
+  78:"This element is rarer than gold and used in catalytic converters, jewelry, and cancer-fighting drugs (cisplatin). It's so unreactive it stays shiny forever.",
+  79:"This element has been treasured by humans for over 5,000 years! It's so malleable that one ounce can be beaten into a sheet covering 9 square meters. All it came from colliding neutron stars!",
+  80:"This element is the only metal that is liquid at room temperature! Thermometers used to contain it. It's so dense that iron cannonballs float in it!",
+  81:"This element is extremely toxic and was once used as rat poison and even in a few high-profile murder cases! Today it's used in medical imaging.",
+  82:"This element was used in Roman plumbing (hence the symbol Pb from 'plumbum'). Some historians think it poisoning contributed to the fall of the Roman Empire!",
+  83:"This element crystals form gorgeous rainbow-colored geometric shapes! It's the least toxic of the heavy metals and is the active ingredient in Pepto-Bismol.",
+  84:"This element was discovered by Marie Curie in 1898 and named after her homeland Poland. It's extremely radioactive and was used in the famous poisoning of Alexander Litvinenko.",
+  85:"This element is the rarest naturally occurring element on Earth — at any given moment, there's less than 1 gram of it in the entire Earth's crust!",
+  86:"This element is a radioactive gas that seeps up from the ground through natural uranium decay. It can collect in basements and is the second leading cause of lung cancer.",
+  87:"This element is so radioactive that a visible sample has never been made — its longest-lived isotope has a half-life of just 22 minutes! At most, 30 grams exist on Earth at once.",
+  88:"This element was discovered by Marie and Pierre Curie after processing tons of uranium ore. It used to be painted on watch dials to make them glow in the dark — dangerously!",
+  89:"This element is so radioactive it glows blue in the dark! The eerie blue glow comes from the ionization of air around the intensely radioactive metal.",
+  90:"This element could be the future of nuclear energy! It's safer and more abundant than uranium, and some countries are building it reactors right now.",
+  91:"This element is one of the rarest and most expensive natural elements. The first sample of pure it metal wasn't obtained until 1934 — 20 years after its discovery!",
+  92:"This element is radioactive and used as nuclear fuel. One kilogram of it can produce as much energy as 1,500 tonnes of coal! Natural it is only mildly radioactive.",
+  93:"This element was the first synthetic transuranium element, made in 1940. It was named after Neptune, the planet beyond Uranus — just as it is beyond uranium!",
+  94:"This element is famous for its use in nuclear weapons and reactors. But the Voyager spacecraft that left our solar system runs on it power that will last for decades!",
+  95:"This element is found in smoke detectors! A tiny amount of radioactive it-241 inside your smoke detector ionizes air to detect smoke particles.",
+  96:"This element was named after Marie and Pierre Curie. It's so intensely radioactive that it glows red in the dark from the heat of its own radioactive decay!",
+  97:"This element was first made in 1949 at UC Berkeley using a cyclotron. Only milligrams have ever been produced — it's incredibly rare and intensely radioactive.",
+  98:"This element is so intensely radioactive it can start a nuclear chain reaction with just a tiny amount. It's used to start up nuclear reactors and to detect gold ore!",
+  99:"This element was discovered in 1952 in the fallout from the first hydrogen bomb test. It was secretly named after Albert Einstein and classified for years.",
+  100:"This element was also found in H-bomb fallout alongside einsteinium. It was named after Enrico Fermi, who built the world's first nuclear reactor in a squash court in Chicago!",
+  101:"This element was named after Dmitri Mendeleev, who created the periodic table! It was first made in 1955 by bombarding einsteinium with alpha particles.",
+  102:"This element was named after Alfred Nobel, the inventor of dynamite who founded the Nobel Prizes. Only a few atoms have ever been made at one time.",
+  103:"This element was named after Ernest Lawrence, inventor of the cyclotron particle accelerator. It's the last of the actinide series and was first made in 1961.",
+  104:"This element was the first element heavier than the actinides to be synthesized. Named after Ernest Rutherford who discovered the atomic nucleus!",
+  105:"This element was independently created by scientists in the US and the USSR during the Cold War — they fought for years over what to name it!",
+  106:"This element was named after Glenn Seaborg while he was still alive — the only person ever to have an element named after them during their lifetime!",
+  107:"This element was named after Niels Bohr, the Danish physicist who developed the model of atomic structure that you learn in chemistry class.",
+  108:"This element was named after the German state of Hesse where it was created. Only a few atoms have ever been made and they decay in milliseconds.",
+  109:"This element was named after Lise Meitner, the physicist who co-discovered nuclear fission but was overlooked for the Nobel Prize. A long-overdue honor!",
+  110:"This element was named after Darmstadt, Germany. It has a half-life of just 10 seconds — it barely exists before it falls apart into other elements!",
+  111:"This element was named after Wilhelm Röntgen, who discovered X-rays. Only a handful of atoms have ever been detected — it's incredibly unstable.",
+  112:"This element was named after astronomer Nicolaus Copernicus who first proposed that Earth orbits the Sun — not the other way around!",
+  113:"This element was the first element discovered in Asia! Japanese scientists at RIKEN created it and named it after Japan ('Nihon' means Japan in Japanese).",
+  114:"This element was named after the Flerov Laboratory in Russia where it was made. It may actually behave like a gas at room temperature despite being a metal!",
+  115:"This element is named after Moscow Oblast in Russia. It was first synthesized in 2003 and confirmed in 2015. Only a few dozen atoms have ever been created.",
+  116:"This element was named after Lawrence Livermore National Laboratory in California. It was created in a collaboration between Russian and American scientists.",
+  117:"This element is named after Tennessee, USA — home to Oak Ridge National Laboratory, Vanderbilt University, and the University of Tennessee, all involved in its discovery.",
+  118:"This element is named after Russian nuclear physicist Yuri Oganessian. It's the heaviest element known and may be a gas or solid — scientists aren't even sure yet!"
 };
 
 function showDetail(el){
@@ -719,9 +827,369 @@ document.getElementById('search').addEventListener('input',function(){
   });
 });
 
+// ===== QUIZ DATA =====
+const QUIZ_DATA = {
+  1:  { geo:"The most abundant element in the universe — about 75% of all normal matter by mass! On Earth it's mainly found combined with oxygen in water. The USA, China, and Germany are major industrial producers.",
+        body:"This element makes up about 10% of your body by mass. It's in every water molecule, every protein, and every DNA strand in your cells. Without it, life as we know it would be impossible.",
+        compounds:"Water (H₂O) — the liquid of life. Peroxide (H₂O₂) — used as hair bleach and wound antiseptic. Ammonia (NH₃) — used in fertilizers that grow most of the world's food.",
+        history:"Henry Cavendish discovered it in 1766 in London, calling it 'inflammable air.' Antoine Lavoisier later gave it a name from the Greek words meaning 'water-former.' It has atomic number 1.",
+        everyday:"It fills weather balloons, powers fuel cells in cars like the Toyota Mirai, and is used in rockets. It also makes your voice squeaky if you inhale it from a balloon (carefully!)." },
+  2:  { geo:"This element is found in natural gas deposits deep underground, mainly in the USA (Texas, Kansas), Qatar, Algeria, and Russia. The US produces over 40% of the world's supply. It is the second lightest element.",
+        body:"This noble gas has no role in the human body — it's completely inert and passes straight through you. However, mixtures of it with oxygen are used by deep-sea divers to breathe safely at great depths.",
+        compounds:"This element forms almost no compounds at all — it's the least reactive element! It is used in its pure form for MRI machines, rocket fuel cooling, and party balloons.",
+        history:"Discovered in the Sun in 1868 by French astronomer Jules Janssen during a solar eclipse — making it the first element found in space before Earth! William Ramsay isolated it on Earth in 1895. Named after the Greek sun god.",
+        everyday:"Party balloons float because this gas is lighter than air. It also cools the superconducting magnets in MRI scanners at hospitals. It's the second element on the periodic table." },
+  3:  { geo:"This element is mined mainly in the 'Battery Metal Triangle' — Chile, Argentina, and Bolivia — which holds over 75% of known reserves. Australia is the largest current producer. Its name comes from the Greek word for stone.",
+        body:"A compound of this element (combined with carbonate) is a medicine prescribed for bipolar disorder and depression. In tiny controlled doses it stabilizes mood. It is not naturally present in significant amounts in the body.",
+        compounds:"Its carbonate form is a psychiatric medicine for bipolar disorder. Its cobalt oxide compound is the material inside your phone battery. Its chloride form is used in air conditioning systems.",
+        history:"Johan August Arfwedson discovered this element in 1817 in Stockholm, Sweden, while analyzing a mineral called petalite. He named it after 'lithos' (Greek for stone) since it was found in rock.",
+        everyday:"Your phone, laptop, and electric car battery almost certainly contains this soft, silvery metal! It's what makes modern portable electronics possible. It is the lightest of all metals." },
+  6:  { geo:"Its pure forms — diamonds and graphite — are found worldwide. Diamond deposits are in South Africa, Russia, Botswana, and Canada. Its fossil fuel forms are mined heavily in China, USA, India, and Australia.",
+        body:"This element is the backbone of all life — it makes up about 18% of your body weight. Every protein, fat, carbohydrate, and DNA molecule in your body is built around chains of it. You are literally a life form based on it!",
+        compounds:"Its dioxide (CO₂) is what you breathe out and plants breathe in. Glucose (C₆H₁₂O₆) is your blood sugar. Aspirin (C₉H₈O₄) is a common painkiller. Chalk and limestone are its calcium salt.",
+        history:"Known since ancient times — charcoal and soot are pure forms of it. Antoine Lavoisier proved in 1772 that diamond was a pure form by burning one. Graphite (pencil 'lead') was identified as the same element in 1779.",
+        everyday:"Every plastic, fuel, food, and medicine contains this element. Pencil 'lead' is actually graphite, one of its forms. Diamonds are another form. Coal, oil, and natural gas are all compounds of it." },
+  7:  { geo:"This element makes up 78% of Earth's atmosphere — it surrounds you right now! Chile has huge deposits of its sodium salt (saltpeter). The USA, Russia, and China are major industrial producers.",
+        body:"This element makes up about 3% of your body weight. It's in all proteins (the building blocks of muscles) and in DNA. Your body cannot absorb it directly from the air — you get it by eating protein-rich foods.",
+        compounds:"Ammonia (NH₃) — fertilizers feeding half the world's population. Nitric acid (HNO₃) — explosives and fertilizers. Laughing gas (N₂O) — dental anesthetic. Its liquid form is used to freeze biological samples.",
+        history:"Daniel Rutherford discovered this gas in 1772 in Edinburgh, Scotland. He called it 'noxious air' because animals couldn't breathe it. Antoine Lavoisier later named it 'azote' (meaning without life).",
+        everyday:"Its liquid form is used to make instant ice cream and preserve biological samples! Its gas keeps potato chip bags fresh. It also inflates some car tires. It's the most abundant gas in the air you breathe." },
+  8:  { geo:"This element makes up 21% of Earth's atmosphere and 46% of Earth's crust (mostly in rocks and minerals). It's the most abundant element in Earth's crust. The USA, China, and Europe are major producers.",
+        body:"This element makes up 65% of your body by mass — mostly in water. You breathe it to power every cell. Red blood cells use iron-containing hemoglobin to carry it from your lungs to every organ in your body.",
+        compounds:"Water (H₂O) — essential for all life. Rust (Fe₂O₃) — what happens to iron in moist air. Its O₃ form (ozone) protects Earth from UV radiation. Its reaction with hydrogen makes the air we breathe.",
+        history:"Carl Wilhelm Scheele discovered it in 1772 but didn't publish. Joseph Priestley independently discovered it in 1774 and is usually credited. Antoine Lavoisier named it meaning 'acid-former' in 1777.",
+        everyday:"You breathe it every second! Hospitals give it to patients. Welders use it to cut metal. Rockets burn it as fuel. Its O₃ form (ozone) in the upper atmosphere blocks harmful UV rays from the sun." },
+  11: { geo:"This element is found as common table salt in the ocean and in massive underground salt deposits worldwide. The Dead Sea has the highest salt concentration of any body of water. Major producers include the USA, China, and Germany.",
+        body:"This element is the main positive ion in the fluid outside your cells. It controls fluid balance, blood pressure, and nerve signal transmission. You need about 500mg daily — but most people eat too much through table salt!",
+        compounds:"Table salt (NaCl) — the most common compound of this metal. Baking soda (NaHCO₃) — used in cooking and antacids. Caustic soda (NaOH) — soap making and drain cleaners. MSG — flavor enhancer in food.",
+        history:"Humphry Davy first isolated this metal in 1807 in London using electrolysis. He named it from the Arabic word 'suda' (headache), since one of its compounds was used to treat headaches. Atomic number: 11.",
+        everyday:"It gives table salt its properties. Its vapor gives street lights their distinctive orange glow. It's in every cell of your body! Baking soda in cakes. Soap is made with its hydroxide compound." },
+  12: { geo:"This element is the 8th most abundant in Earth's crust. It's found in seawater (extracted in USA, Israel), and in the mineral dolomite in Italy, Austria, and China. China produces over 85% of the world's metal supply.",
+        body:"This element is essential for over 300 enzyme reactions in your body! It helps muscles relax (calcium makes them contract), keeps your heartbeat steady, builds strong bones, and helps convert food into energy. Found in nuts and leafy greens.",
+        compounds:"Its oxide (MgO) is an antacid known as milk of magnesia. Its sulfate (MgSO₄) is Epsom salts used in relaxing baths. The green pigment chlorophyll in all plants has this element at its center!",
+        history:"Joseph Black recognized it as an element in 1755 in Edinburgh. Humphry Davy isolated the pure metal in 1808. The name comes from Magnesia, a region in ancient Greece where its minerals were found.",
+        everyday:"Lightweight alloys of this metal are in laptops, car parts, and aircraft frames. It burns with a brilliant white flame in fireworks and flares. Antacid tablets often contain its compounds. Atomic number: 12." },
+  26: { geo:"This element is the most common by mass in the entire Earth — Earth's core is mostly made of it! Major ore mining occurs in Australia (Pilbara), Brazil, China, India, and Russia. An entire ancient era was named after it.",
+        body:"This element is the critical component of hemoglobin — the protein in red blood cells that carries oxygen through your body. That's what makes blood red! Low levels cause anemia, leading to fatigue and weakness.",
+        compounds:"Its oxide (Fe₂O₃) is rust. Steel (this element + carbon) is the world's most important structural material. Cast forms are used for cookware. Hemoglobin — the oxygen-carrying molecule in your blood — contains it.",
+        history:"Used since ancient times — an entire age of human history was named after it, beginning around 1200 BCE. The Hittites in modern Turkey were among the first to smelt it. Steel production in the Industrial Revolution transformed civilization.",
+        everyday:"Steel is everywhere — buildings, bridges, cars, appliances, knives. Cast cookware. The Eiffel Tower is made of it. Train tracks. And the element in your blood keeping you alive right now!" },
+  79: { geo:"This precious metal is found in small amounts worldwide, with major producers in China, Australia, Russia, South Africa, and the USA. Famous rushes for this metal happened in California (1848) and Australia (1851).",
+        body:"This element has no biological role, but its compounds are used medicinally! Its salts have been used to treat rheumatoid arthritis. Its nanoparticles are being explored for cancer drug delivery.",
+        compounds:"Its chloride (AuCl₃) is used in photography and plating. Its cyanide form is used in electroplating jewelry. Colloidal forms give medieval stained glass its deep red color!",
+        history:"Treasured by humans for over 6,000 years. The ancient Egyptians called it 'the flesh of the gods.' Every atom of it on Earth arrived from colliding neutron stars billions of years ago — before Earth formed! .",
+        everyday:"Jewelry and coins. Electronics connectors are plated with it because it never corrodes. Leaf forms decorate picture frames and architecture. Olympic medals are made with it — or supposed to be!" },
+  47: { geo:"This precious metal is found mainly in Mexico (world's largest producer!), Peru, China, Russia, and Australia. Many deposits are found alongside lead, copper, and other metal ores. Argentina is named after it!",
+        body:"This metal has powerful antibacterial properties! Its ions kill bacteria, viruses, and fungi. Wound dressings coated with it prevent infection. Some hospitals use it on medical devices to prevent bacterial growth.",
+        compounds:"Its nitrate (AgNO₃) — used to cauterize wounds. Its chloride (AgCl) — was used in photographic film. Its sulfide (Ag₂S) — the black tarnish you see on old cutlery. Its symbol comes from the Latin 'argentum.'",
+        history:"Used for at least 5,000 years. Ancient Greeks stored water in vessels made of this metal to keep it fresh — they unknowingly used its antibacterial properties! The country Argentina is named after it.",
+        everyday:"Sterling cutlery and jewelry. Mirrors are coated with it. Old photographic film used its compounds. Electrical contacts in switches. Antibacterial socks and sportswear contain threads of this metal." },
+  29: { geo:"This reddish metal has been mined for over 10,000 years! Chile is by far the world's largest producer (28% of global supply), followed by Peru, China, DRC Congo, and Australia. The Statue of Liberty is made of it!",
+        body:"This is an essential trace mineral. Your body uses it to make red blood cells, absorb iron, and maintain nerve cells and the immune system. You need about 900mcg daily from nuts, seeds, seafood, and liver.",
+        compounds:"Its sulfate (CuSO₄) — blue crystals used as a fungicide. Bronze is this element alloyed with tin — the first major metal alloy used for 3,000 years. Brass is this element alloyed with zinc.",
+        history:"The first metal used by humans around 9000 BCE in the Middle East. The Bronze Age (3300–1200 BCE) was named after its alloy with tin. The word comes from Cyprus (Kypros), where Romans mined it. .",
+        everyday:"Electrical wiring in your house (the best affordable electrical conductor). Plumbing pipes. The Statue of Liberty — its green color is this metal's carbonate (patina). Pennies are plated with it. ." },
+  20: { geo:"This element is the 5th most abundant in Earth's crust! Found in limestone and marble deposits worldwide. The White Cliffs of Dover in England are made of its carbonate. Major producers include China, USA, India, and Brazil.",
+        body:"99% of this element in your body is in your bones and teeth! The remaining 1% is critical for muscle contractions (including your heartbeat), blood clotting, and nerve signals. Dairy products and leafy greens are great sources.",
+        compounds:"Its carbonate (CaCO₃) — limestone, chalk, marble, and antacid tablets (Tums!). Its phosphate — your bones and teeth. Its chloride — road salt to melt ice. Its hydroxide — cement and lime for construction.",
+        history:"Humphry Davy isolated this metal in 1808 in London using electrolysis. The name comes from the Latin 'calx' meaning lime. Romans used its compounds to make concrete — some Roman structures still stand today!",
+        everyday:"Milk and cheese provide it for your bones. Chalk on a blackboard. Limestone in buildings. Cement and concrete in every structure. Antacid tablets for upset stomachs. Eggshells are mostly its carbonate!" },
+  19: { geo:"This element is found in salt deposits called potash worldwide. Major producers are Canada (Saskatchewan has the world's largest reserves!), Russia, Belarus, and Germany. Its chemical symbol is K, from the Latin 'kalium.'",
+        body:"This element is essential for every heartbeat! It works with sodium to control electrical signals in nerve and muscle cells. Low levels can cause dangerous heart arrhythmias. Bananas, potatoes, and avocados are rich sources.",
+        compounds:"Its chloride (KCl) — fertilizers and salt substitute. Its nitrate (KNO₃) — gunpowder and fireworks. Its permanganate (KMnO₄) — water purification and antiseptic. Its iodide — thyroid medicine.",
+        history:"Humphry Davy isolated this metal in 1807 — the first metal ever isolated by electrolysis. Its its chemical symbol comes from 'kalium,' the Latin/Arabic word for potash. It was the first metal found to be less dense than water!",
+        everyday:"Fertilizers that grow most of the world's food contain it. The gunpowder in fireworks uses its nitrate. It's in every banana you eat — and every cell of your body. ." },
+  14: { geo:"This element is the second most abundant in Earth's crust (27.7%) after oxygen! Found as dioxide (sand and quartz) on every beach worldwide. A famous tech valley in California is named after it.",
+        body:"This element may play a small role in bone and connective tissue health, though its biological role is still being studied. Some research suggests it may help maintain strong bones and healthy skin.",
+        compounds:"Its dioxide (SiO₂) — sand, glass, and quartz. Its carbide (SiC) — extremely hard, used in cutting tools. Its flexible polymer forms are used in medical implants, non-stick cookware, and bathroom sealants.",
+        history:"Jöns Jacob Berzelius first isolated it in 1824 in Sweden. The name comes from the Latin 'silex' meaning flint. The first transistor made from it in 1954 at Bell Labs launched the modern electronics revolution.",
+        everyday:"Every computer chip, smartphone, and solar panel is built on this element! Glass windows are made of its dioxide. Sand on every beach is this element combined with oxygen. Fiber optic cables too." },
+  15: { geo:"This element is not found free in nature — only in compounds. Morocco holds 70% of world phosphate rock reserves! Other major deposits are in China, Egypt, Algeria, and Florida (USA).",
+        body:"This element is in every cell! It forms the backbone of DNA and RNA. ATP — the molecule that powers every chemical reaction in your body — contains it. About 1% of your body weight is this element, mostly in bones.",
+        compounds:"Its acid (H₃PO₄) — gives cola drinks their tangy taste! Its calcium salt — your bones and teeth. ATP (adenosine triphosphate) — energy currency of all living cells. Its compounds are essential fertilizers.",
+        history:"Hennig Brand accidentally discovered this element in 1669 in Hamburg while boiling huge amounts of urine trying to make gold! It was the first element discovered by a known individual. It glows in the dark!",
+        everyday:"Fertilizers critical for feeding the world. The strike surface on matchboxes. Cola beverages. DNA and ATP in your own body. Its name comes from the Greek for 'light-bearer' because it glows in the dark!" },
+  16: { geo:"This yellow element is found in pure form near volcanoes and hot springs — major deposits in Poland, Russia, USA, and the Pacific Ring of Fire. It's also extracted from natural gas and oil refining worldwide.",
+        body:"This element is part of two essential amino acids: cysteine and methionine — building blocks of proteins, including keratin in your hair, skin, and nails. That's why burning hair smells like rotten eggs!",
+        compounds:"Its acid (H₂SO₄) — the world's most produced industrial chemical, used in car batteries and fertilizers. Its dioxide (SO₂) — preserves wine and dried fruits. Gunpowder contains this element.",
+        history:"Known since ancient times — mentioned in the Bible as 'brimstone.' Ancient Egyptians used it to bleach cotton. Antoine Lavoisier confirmed it was a pure element in 1777. Volcanoes release large amounts of it.",
+        everyday:"Car batteries contain its acid. Wine and dried fruit are preserved with its dioxide. It's in matches, gunpowder, and rubber vulcanization. Volcanic eruptions and rotten eggs both smell of this element!" },
+  17: { geo:"This greenish-yellow gas is not found free in nature — only as compounds like salt (NaCl). Industrial production happens in the USA, China, and Germany by passing electricity through salt water (brine).",
+        body:"Its negative ions are the main negative ion in the fluid outside your cells. In the form of hydrochloric acid (HCl) it's in your stomach to digest food and kill bacteria. You get it from table salt.",
+        compounds:"Table salt (NaCl) — sodium chloride. Hydrochloric acid (HCl) — your stomach acid! PVC plastic (polyvinyl chloride) — pipes, flooring, cables. Bleach (sodium hypochlorite) — household disinfectant.",
+        history:"Carl Wilhelm Scheele discovered this gas in 1774 in Sweden. Humphry Davy confirmed it was an element in 1810. During WWI it was used as a chemical weapon — motivating the Geneva Protocol of 1925.",
+        everyday:"It keeps swimming pools and drinking water safe. Bleach for your kitchen. PVC pipes and window frames. Your stomach uses its acid every meal. It's a yellow-green gas with atomic number 17." },
+  18: { geo:"This noble gas makes up about 0.93% of Earth's atmosphere — the third most abundant gas after nitrogen and oxygen. It's obtained by liquefying and distilling air. Major producers are USA, Europe, and China.",
+        body:"This noble gas has no biological role whatsoever — completely inert. You breathe small amounts with every breath but it passes through without interacting with anything in your body.",
+        compounds:"This element forms essentially no compounds! It's used purely in elemental form. This complete inertness is what makes it valuable — perfect for protecting sensitive materials from reactions.",
+        history:"Lord Rayleigh and William Ramsay discovered it in 1894 in London by noticing that nitrogen from air was slightly heavier than nitrogen from compounds. Named from the Greek 'argos' meaning lazy or inactive.",
+        everyday:"Incandescent light bulbs are filled with this gas to stop the filament from burning out. Double-glazed windows have it between the panes for insulation. Welders use it to shield welds from oxidation." },
+  10: { geo:"This noble gas makes up only 0.0018% of Earth's atmosphere. Like argon, it's extracted by liquefying air. The USA and Russia are major producers. It is actually more abundant in the universe than on Earth!",
+        body:"This noble gas has absolutely no biological role in the human body. It's completely inert. However, its mixtures with another gas are sometimes used in eye surgery lasers.",
+        compounds:"This element forms no stable compounds — it's a noble gas. Used in its pure elemental form. This complete inertness is what makes it safe to use in glowing signs with electricity.",
+        history:"William Ramsay and Morris Travers discovered it in 1898 in London by liquefying air. Named from the Greek 'neos' meaning new. Georges Claude used it to make the first glowing sign in 1910.",
+        everyday:"Glowing signs in shop windows — this gas glows brilliant red-orange when electricity passes through it. Used in high-voltage indicators and some lasers. It's the element with atomic number 10." },
+  13: { geo:"This metal is the most abundant metal and third most abundant element in Earth's crust (8%). Its ore (bauxite) is mined mainly in Australia, Guinea, China, Brazil, and India. Very lightweight and silver-colored.",
+        body:"This metal has no known biological role in the human body. In fact, excessive accumulation in the brain has been studied in connection with Alzheimer's disease, though the link is still debated by scientists.",
+        compounds:"Its oxide (Al₂O₃) — found in sapphires and rubies! Its sulfate — water purification. Its hydroxide — antacid ingredient. Alum (KAl(SO₄)₂) — used in water treatment and food pickling.",
+        history:"Hans Christian Ørsted first isolated it in 1825. Once so rare that Napoleon III served honored guests with cutlery made of it while lesser guests used gold and silver! The Washington Monument (1884) was capped with it.",
+        everyday:"Beverage cans, kitchen foil, aircraft, bicycles, window frames, and smartphones. Recycling it uses only 5% of the energy needed to make it new. It's a lightweight, corrosion-resistant metal." },
+  28: { geo:"This metal is mined mainly in Indonesia, Philippines, Russia, and Canada. Russia's Norilsk is one of the world's largest deposits. The Canadian city of Sudbury has massive deposits left by an ancient meteorite impact!",
+        body:"Found in trace amounts in the body. Some research suggests it may play a minor role in enzyme function. Allergies to it are very common — many people react to it in jewelry, causing itchy skin rashes.",
+        compounds:"Its cadmium alloy (NiCd) makes rechargeable batteries. Stainless steel contains this element for corrosion resistance. Its oxide is used in ceramics. Nichrome (this element + chromium) makes heating elements in toasters.",
+        history:"Axel Cronstedt discovered this element in 1751 in Sweden. Its ore was called 'Old Nick's copper' by German miners who thought it was copper but could not extract any metal from it. US 5-cent coins are named after it!",
+        everyday:"US 5-cent coins are named after it (though mostly copper!). Stainless steel pots and pans. Rechargeable batteries. Guitar strings. White gold jewelry is often gold alloyed with this metal." },
+  30: { geo:"This metal is mined worldwide, with China being the world's largest producer. Other major producers include Australia, Peru, India, and the USA. Often found alongside lead and silver ores in the same deposits.",
+        body:"This element is essential for your immune system, wound healing, DNA synthesis, and cell division. It's needed for your sense of taste and smell. You need about 8-11mg daily from meat, shellfish, legumes, and nuts.",
+        compounds:"Its oxide (ZnO) — sunscreen and baby powder! Its sulfide — glow-in-the-dark watch paint. Galvanized steel is iron coated with this metal. Brass is this metal alloyed with copper. Used in lozenges for colds.",
+        history:"Used in brass alloys since ancient times, but pure metal was first isolated in India around the 13th century. Andreas Marggraf rediscovered the process in Europe in 1746. Its name may come from German for 'prong/spike.'",
+        everyday:"Galvanized (this metal-coated) steel in cars, fences, and roofing. Sunscreen contains its oxide. Cold remedy lozenges. Brass instruments. It's in every multivitamin. The white stuff lifeguards put on their noses!" },
+  92: { geo:"This radioactive metal is found in ore deposits worldwide, with Kazakhstan, Canada (Athabasca Basin), Australia, Namibia, Niger, and Russia being largest producers. It's actually 40 times more common in Earth's crust than silver!",
+        body:"This element is toxic to the kidneys and mildly radioactive. It has no beneficial role in the human body. However, it is used in cancer radiation therapy and in nuclear medicine diagnostic imaging.",
+        compounds:"Its hexafluoride (UF₆) — used to enrich nuclear fuel. Its dioxide (UO₂) — nuclear reactor fuel pellets. Its -235 isotope — used in nuclear reactors. Depleted forms — used in armor-piercing ammunition.",
+        history:"Martin Klaproth discovered it in 1789 in Berlin, naming it after the planet Uranus. Henri Becquerel discovered its radioactivity in 1896. The Manhattan Project used it in the first atomic bombs in 1945.",
+        everyday:"Nuclear power plants generate about 10% of the world's electricity from this element. Some old pottery used it for orange-red glazes. Old glow-in-the-dark watch hands used related radioactive chemistry." },
+  94: { geo:"This radioactive element does not occur naturally on Earth in significant amounts — it's entirely man-made! First created at the University of California, Berkeley. The USA, Russia, UK, and France produce it in reactors.",
+        body:"This element is extremely toxic and radioactive, with no beneficial role in the human body. It mimics calcium and concentrates in bones, where its radiation can cause bone cancer and leukemia.",
+        compounds:"Its dioxide (PuO₂) — used in MOX nuclear fuel. Its -238 isotope — powers RTG generators in spacecraft. Its -239 isotope — the fissile material in nuclear weapons. PuBe — neutron source for oil industry.",
+        history:"Glenn Seaborg and his team created this element in December 1940 at Berkeley by bombarding uranium-238 with deuterons. Its -239 form was used in the 'Fat Man' bomb dropped on Nagasaki in 1945.",
+        everyday:"The Voyager 1 and 2 spacecraft (now in interstellar space) are powered by its -238 RTG generators. The Curiosity and Perseverance Mars rovers also run on its power! Named after the planet Pluto." },
+  53: { geo:"This element comes mainly from underground brine deposits in Chile (world's largest producer), Japan, and the USA. Seaweed is naturally rich in it — that's why coastal populations historically had fewer thyroid problems.",
+        body:"This element is essential for making thyroid hormones (T3 and T4) which control your metabolism, growth, and brain development. Its deficiency causes goiter (swollen thyroid). Table salt is enriched with it to prevent this!",
+        compounds:"Its potassium salt (KI) — thyroid medicine and radiation emergency pills. Its tincture — antiseptic for cuts. Its sodium salt — used in thyroid scans. Amiodarone — a heart rhythm medicine containing it.",
+        history:"Bernard Courtois accidentally discovered it in 1811 in Paris while making saltpeter from seaweed ash. He noticed a beautiful violet vapor. Gay-Lussac named it from the Greek for violet color. Atomic number 53.",
+        everyday:"Enriched table salt prevents thyroid disease for billions of people worldwide. Its solution (Betadine) disinfects wounds. Its contrast dye is used in X-rays and CT scans. This purple-black solid has atomic number 53." },
+  56: { geo:"This element is found as barite (BaSO₄) deposits in China (world's largest producer), India, Morocco, USA, and Turkey. Barite is incredibly dense and is mixed into drilling fluids for oil and gas wells.",
+        body:"Its sulfate is drunk as a 'meal' or 'enema' before X-rays so doctors can see the digestive system clearly. It's safe because it's completely insoluble and passes through the body without being absorbed.",
+        compounds:"Its sulfate (BaSO₄) — X-ray contrast agent and drilling fluid. Its carbonate — rat poison and ceramic glaze. Its chlorate — creates green color in fireworks. Its nitrate — also produces green in fireworks.",
+        history:"Carl Wilhelm Scheele discovered its oxide in 1774, and Humphry Davy isolated the pure metal in 1808 using electrolysis. The name comes from the Greek 'barys' meaning heavy — its compounds are unusually dense.",
+        everyday:"This element creates the green colors in fireworks! Its sulfate is used in drilling fluids for oil wells. X-ray meals using it help diagnose stomach ulcers and colon cancer. atomic number 56." }
+};
+
+// Fill in remaining elements with generated hints
+EL.forEach(el => {
+  if (!QUIZ_DATA[el.n]) {
+    const catLabel = CATS[el.cat].label;
+    QUIZ_DATA[el.n] = {
+      geo: el.cat === 'lanthanide'
+        ? `This rare earth element is found in deposits mainly in China, which controls over 85% of global rare earth production. It belongs to the lanthanide series, elements 57–71 on the periodic table.`
+        : el.cat === 'actinide'
+        ? `This element is found in trace amounts naturally or is produced synthetically in nuclear reactors worldwide. It belongs to the actinide series (elements 89–103) and is radioactive.`
+        : `This ${catLabel.toLowerCase()} element is found in various mineral deposits and ores across multiple continents. It has atomic number ${el.n} and was ${el.yr === 'ancient' ? 'known since ancient times' : 'discovered in ' + el.yr}.`,
+      body: BODY[el.n] || (BODY_ELS.has(el.n)
+        ? `This element plays an important trace role in human biology and is found in the body in small but essential amounts. It has atomic number ${el.n}.`
+        : `This element has no known essential biological role in the human body. It is a ${catLabel.toLowerCase()} with atomic number ${el.n}.`),
+      compounds: USES[el.n] || `This ${catLabel.toLowerCase()} has various applications in industry, research, and technology. It has atomic number ${el.n} and atomic mass ${el.mass}.`,
+      history: `This element was ${el.yr === 'ancient' ? 'known since ancient times and used by early civilizations.' : 'discovered in ' + el.yr + '.'} It belongs to the ${catLabel} family. Its atomic number is ${el.n} and its atomic mass is ${el.mass}. Its state at room temperature is ${el.st.toLowerCase()}.`,
+      everyday: FACTS[el.n] || `This ${catLabel.toLowerCase()} has atomic number ${el.n} and atomic mass ${el.mass}. Its melting point is ${el.mp} and it is a ${el.st.toLowerCase()} at room temperature.`
+    };
+  }
+});
+
+// ===== QUIZ ENGINE =====
+const CAT_LABELS = {
+  geo:       { label: '🌍 Geography',       color: '#22c55e' },
+  body:      { label: '🫀 Human Body',      color: '#e056fd' },
+  compounds: { label: '🧪 Compounds',       color: '#3b82f6' },
+  history:   { label: '📜 History',         color: '#f59e0b' },
+  everyday:  { label: '🏠 Everyday Life',   color: '#f97316' },
+  mixed:     { label: '🎲 Mixed',           color: '#a855f7' }
+};
+
+let quizState = {
+  category: null, questions: [], currentQ: 0,
+  score: 0, streak: 0, maxStreak: 0,
+  hintsUsed: 0, results: [], totalQuestions: 10
+};
+
+function getRandomElements(exclude, count) {
+  const pool = EL.filter(e => e.n !== exclude && e.n <= 103);
+  const shuffled = pool.sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+function getHintCategory(cat) {
+  if (cat === 'mixed') {
+    const cats = ['geo','body','compounds','history','everyday'];
+    return cats[Math.floor(Math.random() * cats.length)];
+  }
+  return cat;
+}
+
+function generateQuestions(category) {
+  const pool = EL.filter(e => e.n <= 103).sort(() => Math.random() - 0.5).slice(0, quizState.totalQuestions);
+  return pool.map(el => {
+    const hintCat = getHintCategory(category);
+    const wrongOpts = getRandomElements(el.n, 3);
+    const options = [el, ...wrongOpts].sort(() => Math.random() - 0.5);
+    return { element: el, hintCat, options, extraHints: [], hintsUsed: 0, answered: false, correct: null, pointsEarned: 0 };
+  });
+}
+
+function startQuiz(category) {
+  quizState.category = category;
+  quizState.questions = generateQuestions(category);
+  quizState.currentQ = 0;
+  quizState.score = 0;
+  quizState.streak = 0;
+  quizState.maxStreak = 0;
+  quizState.results = [];
+  showScreen('q');
+  renderQuestion();
+}
+
+function showScreen(name) {
+  document.querySelectorAll('.quiz-screen').forEach(s => s.style.display = 'none');
+  document.getElementById('quiz-screen-' + name).style.display = 'block';
+}
+
+function renderQuestion() {
+  const q = quizState.questions[quizState.currentQ];
+  const total = quizState.totalQuestions;
+  const current = quizState.currentQ + 1;
+
+  document.getElementById('quiz-progress-bar').style.width = ((current - 1) / total * 100) + '%';
+  document.getElementById('quiz-q-num').textContent = `Question ${current} of ${total}`;
+  document.getElementById('quiz-score').textContent = `Score: ${quizState.score}`;
+  document.getElementById('quiz-streak').textContent = quizState.streak >= 2 ? `🔥 ${quizState.streak} streak!` : '';
+
+  const catInfo = CAT_LABELS[q.hintCat] || CAT_LABELS['everyday'];
+  const hintBox = document.getElementById('quiz-hint-box');
+  document.getElementById('quiz-hint-label').innerHTML = `<span style="color:${catInfo.color}">${catInfo.label} HINT</span>`;
+  document.getElementById('quiz-hint-label').style.color = catInfo.color;
+  document.getElementById('quiz-hint-text').textContent = QUIZ_DATA[q.element.n][q.hintCat] || QUIZ_DATA[q.element.n]['everyday'];
+
+  document.getElementById('quiz-extra-hints').innerHTML = '';
+  document.getElementById('quiz-feedback').textContent = '';
+  document.getElementById('quiz-feedback').className = '';
+  document.getElementById('quiz-more-hint-btn').disabled = false;
+  document.getElementById('quiz-more-hint-btn').style.display = 'block';
+
+  const optsEl = document.getElementById('quiz-options');
+  optsEl.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = `<span style="font-size:18px">${opt.sym}</span><span>${opt.name}</span>`;
+    btn.addEventListener('click', () => answerQuestion(opt, btn));
+    optsEl.appendChild(btn);
+  });
+}
+
+function getExtraHintCategory(q) {
+  const allCats = ['geo','body','compounds','history','everyday'];
+  const used = new Set([q.hintCat, ...q.extraHints.map(h => h.cat)]);
+  const remaining = allCats.filter(c => !used.has(c));
+  return remaining.length ? remaining[Math.floor(Math.random() * remaining.length)] : null;
+}
+
+document.getElementById('quiz-more-hint-btn').addEventListener('click', () => {
+  const q = quizState.questions[quizState.currentQ];
+  const nextCat = getExtraHintCategory(q);
+  if (!nextCat) { document.getElementById('quiz-more-hint-btn').disabled = true; return; }
+  q.extraHints.push({ cat: nextCat });
+  q.hintsUsed++;
+  const catInfo = CAT_LABELS[nextCat];
+  const hintEl = document.createElement('div');
+  hintEl.className = 'extra-hint';
+  hintEl.innerHTML = `<span style="color:${catInfo.color};font-size:10px;font-weight:700;display:block;margin-bottom:4px">${catInfo.label} HINT (-1 pt)</span>${QUIZ_DATA[q.element.n][nextCat]}`;
+  document.getElementById('quiz-extra-hints').appendChild(hintEl);
+  if (q.extraHints.length >= 4) document.getElementById('quiz-more-hint-btn').disabled = true;
+});
+
+function answerQuestion(chosen, btn) {
+  const q = quizState.questions[quizState.currentQ];
+  if (q.answered) return;
+  q.answered = true;
+
+  document.getElementById('quiz-more-hint-btn').style.display = 'none';
+  document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+
+  const correct = chosen.n === q.element.n;
+  const basePoints = correct ? 3 : 0;
+  const hintPenalty = q.hintsUsed;
+  const points = Math.max(0, basePoints - hintPenalty);
+  q.correct = correct;
+  q.pointsEarned = points;
+
+  if (correct) {
+    btn.classList.add('correct');
+    quizState.score += points;
+    quizState.streak++;
+    quizState.maxStreak = Math.max(quizState.maxStreak, quizState.streak);
+    const streakBonus = quizState.streak >= 3 ? ' 🔥 Streak bonus!' : '';
+    document.getElementById('quiz-feedback').textContent = `✅ Correct! +${points} points${streakBonus}`;
+    document.getElementById('quiz-feedback').className = 'correct';
+  } else {
+    btn.classList.add('wrong');
+    quizState.streak = 0;
+    document.getElementById('quiz-feedback').textContent = `❌ Not quite! The answer was ${q.element.name} (${q.element.sym})`;
+    document.getElementById('quiz-feedback').className = 'wrong';
+    // Highlight correct
+    document.querySelectorAll('.quiz-opt').forEach(b => {
+      const sym = b.querySelector('span')?.textContent;
+      if (sym === q.element.sym) b.classList.add('correct');
+    });
+  }
+
+  quizState.results.push({ element: q.element, correct, points });
+  document.getElementById('quiz-score').textContent = `Score: ${quizState.score}`;
+  document.getElementById('quiz-streak').textContent = quizState.streak >= 2 ? `🔥 ${quizState.streak} streak!` : '';
+
+  setTimeout(() => {
+    quizState.currentQ++;
+    if (quizState.currentQ >= quizState.totalQuestions) {
+      showResults();
+    } else {
+      renderQuestion();
+    }
+  }, 1800);
+}
+
+function showResults() {
+  showScreen('results');
+  const maxScore = quizState.totalQuestions * 3;
+  const pct = Math.round(quizState.score / maxScore * 100);
+  const correct = quizState.results.filter(r => r.correct).length;
+
+  let emoji = '😅', grade = 'Keep practicing!';
+  if (pct >= 90) { emoji = '🏆'; grade = 'Outstanding! You\'re a chemistry genius!'; }
+  else if (pct >= 75) { emoji = '🌟'; grade = 'Great job! You really know your elements!'; }
+  else if (pct >= 60) { emoji = '👍'; grade = 'Good work! Review the ones you missed.'; }
+  else if (pct >= 40) { emoji = '📚'; grade = 'Keep studying — you\'re getting there!'; }
+
+  document.getElementById('quiz-results-title').textContent = emoji;
+  document.getElementById('quiz-results-score').textContent = `${quizState.score} / ${maxScore}`;
+  document.getElementById('quiz-results-grade').innerHTML = `${correct}/${quizState.totalQuestions} correct &nbsp;·&nbsp; ${grade}${quizState.maxStreak >= 3 ? ' &nbsp;·&nbsp; 🔥 Best streak: ' + quizState.maxStreak : ''}`;
+  document.getElementById('quiz-progress-bar').style.width = '100%';
+
+  const breakdown = document.getElementById('quiz-breakdown');
+  breakdown.innerHTML = '';
+  quizState.results.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'breakdown-row ' + (r.correct ? 'correct-row' : 'wrong-row');
+    row.innerHTML = `<span class="breakdown-sym" style="color:${CATS[r.element.cat].bg}">${r.element.sym}</span><span class="breakdown-name">${r.element.name}</span><span class="breakdown-pts">${r.correct ? '+'+r.points+' pts ✅' : '0 pts ❌'}</span>`;
+    breakdown.appendChild(row);
+  });
+}
+
+document.getElementById('quiz-retry').addEventListener('click', () => startQuiz(quizState.category));
+document.getElementById('quiz-change-cat').addEventListener('click', () => showScreen('cat'));
+document.getElementById('quiz-close').addEventListener('click', () => {
+  document.getElementById('quiz-overlay').classList.remove('show');
+});
+document.getElementById('btn-quiz').addEventListener('click', () => {
+  document.getElementById('quiz-overlay').classList.add('show');
+  showScreen('cat');
+});
+document.querySelectorAll('.qcat-btn').forEach(btn => {
+  btn.addEventListener('click', () => startQuiz(btn.dataset.cat));
+});
+
 buildGrid(null);
 buildLegend();
 </script>
+
 
 
 </body></html>
